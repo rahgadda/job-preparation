@@ -2,6 +2,7 @@
 
 ## Overview
 - Streamlit is a `free and open-source framework` to rapidly build and share beautiful machine learning and data science web apps without prior knowledge of Web Development.
+- It allows you to create user interfaces with minimal code.
 - It was built in `React` and first release in `October 2019`, by a software company founded by `Adrien Treuille, Amanda Kelly, and Thiago Teixeira in 2018 in San Francisco, California`
 - Below are some high-level ML & Datascience libraries that are supported by Streamlit.
 
@@ -33,7 +34,6 @@
   streamlit run hello.py
   ```
 - If there are any changes applied on `hello.py`, a message `Source file changed` shown. The `Rerun` button will run all the code blocks from the start and display the changes thereafter.
-  
   ![](00-images/01-streamlit-source-chaged.png)
 
 ## Reference
