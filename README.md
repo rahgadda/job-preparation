@@ -10,3 +10,7 @@
 quadrantChart
     title Job Search By 2024
 ```
+```mermaid
+graph TB
+    A & B--> C & D
+```
