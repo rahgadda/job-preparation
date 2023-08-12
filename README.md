@@ -6,6 +6,10 @@
   - `Machine Learning:` This will capture all the activities that I should complete to learn ML, Deep Learning, NLP, Vision
   - `
 
+<script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@9/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ startOnLoad: true});
+</script>
 <pre class="mermaid">
 quadrantChart
     title Job Search By 2024
@@ -22,8 +26,3 @@ quadrantChart
     scikit-learn 6:  [0.75,0.75]
     ML Algo 7:  [0.55,0.85]
 </pre>
-
-<script type="module">
-    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@9/dist/mermaid.esm.min.mjs';
-    mermaid.initialize({ startOnLoad: true});
-</script>
