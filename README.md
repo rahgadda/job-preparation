@@ -7,8 +7,7 @@
   - `
 
 ```mermaid
-quadrantChart
-    title Job Search By 2024
+quadrantChart Job Search By 2024 
 ```
 ```mermaid
 graph TB
