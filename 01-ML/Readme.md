@@ -7,7 +7,7 @@
 - 
 
 ## Abbrivations
-
+-
 
 ## References
-- [Math Reference]()
+- [Math Reference](https://towardsdatascience.com/mathematics-for-data-science-e53939ee8306)
