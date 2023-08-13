@@ -5,7 +5,7 @@ st.title("Title")
 
 # Title With Achor
 # Optional anchor parameter can be used in st.title(), st.header(), and st.subheader()
-st.title("Title", anchor="Streamlit")
+st.title("Title With Anchor", anchor="Streamlit")
 
 # Header
 st.header("Header")
@@ -35,13 +35,6 @@ st.code(code, language='python')
 name = "Alice"
 age = 30
 st.write(f"Name: {name}, Age: {age}")
-
-# Justified Text Alignmet
-st.write("Center aligned text", justify="center")
-st.write("Right aligned text", justify="right")
-
-# Superscript and Subscript
-st.write("x<sup>2</sup> + y<sub>2</sub> = z")
 
 # Horizontal Rule
 st.markdown("---")
