@@ -9,7 +9,7 @@
 
   | Usecase          	| Python Libraries                           	|
   |------------------	|--------------------------------------------	|
-  | Data Processing  	| Pandas, Numpy                              	|
+  | Data Processing  	| Pandas, Numpy, PyArrow, Snowpark, PySpark   |
   | Visualization    	| Matplotlib, Plotly, Seaborn, Bokeh, Altair 	|
   | Machine Learning 	| PyTorch, Tensorflow, Keras, Scikit-learn   	|
   | Computer Vision  	| OpenCV, imgaug, SimpleCV, BoofCV           	|
