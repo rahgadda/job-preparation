@@ -7,12 +7,12 @@
 - It was built in `React` and first release in `October 2019`, by a software company founded by `Adrien Treuille, Amanda Kelly, and Thiago Teixeira in 2018 in San Francisco, California`
 - Below are some high-level ML & Datascience libraries that are supported by Streamlit.
 
-  | Usecase          	| Python Libraries                           	|
-  |------------------	|--------------------------------------------	|
-  | Data Processing  	| Pandas, Numpy, PyArrow, Snowpark, PySpark   |
-  | Visualization    	| Matplotlib, Plotly, Seaborn, Bokeh, Altair 	|
-  | Machine Learning 	| PyTorch, Tensorflow, Keras, Scikit-learn   	|
-  | Computer Vision  	| OpenCV, imgaug, SimpleCV, BoofCV           	|
+  | Usecase          	| Python Libraries                           	                    |
+  |------------------	|---------------------------------------------------------------	|
+  | Data Processing  	| Pandas, Numpy, PyArrow, Snowpark, PySpark                       |
+  | Visualization    	| Matplotlib, Altair, Vega-Lite, Plotly, Bokeh, PyDeck, GraphViz 	|
+  | Machine Learning 	| PyTorch, Tensorflow, Keras, Scikit-learn   	                    |
+  | Computer Vision  	| OpenCV, imgaug, SimpleCV, BoofCV           	                    |
 
 ## Installation
 - It is a python library that can be installed using
