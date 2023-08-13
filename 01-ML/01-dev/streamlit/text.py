@@ -45,6 +45,7 @@ st.write("x<sup>2</sup> + y<sub>2</sub> = z")
 
 # Horizontal Rule
 st.markdown("---")
+st.divider()
 
 # Metrics, helps the user see any changes in the data easily
 st.metric( label="Population", value="1.6 Billions", delta="1 Billions", delta_color="inverse" )

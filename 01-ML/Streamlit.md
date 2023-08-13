@@ -38,6 +38,7 @@
 
 ## Reference
 - [Streamlit Documentation](https://docs.streamlit.io/library/get-started)
+- [Component API](https://docs.streamlit.io/library/api-reference)
 - [Streamlit Gallery](https://streamlit.io/gallery)
 - [Awesome Streamlit](https://awesome-streamlit.org/)
 - Beginner's Guide to Streamlit with Python -Ebook
