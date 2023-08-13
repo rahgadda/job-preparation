@@ -36,6 +36,16 @@ name = "Alice"
 age = 30
 st.write(f"Name: {name}, Age: {age}")
 
+# Justified Text Alignmet
+st.write("Center aligned text", justify="center")
+st.write("Right aligned text", justify="right")
+
+# Superscript and Subscript
+st.write("x<sup>2</sup> + y<sub>2</sub> = z")
+
+# Horizontal Rule
+st.markdown("---")
+
 # Metrics, helps the user see any changes in the data easily
 st.metric( label="Population", value="1.6 Billions", delta="1 Billions", delta_color="inverse" )
 st.metric( label="Population", value="1.6 Billions", delta="1 Billions", delta_color="off" )
