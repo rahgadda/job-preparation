@@ -11,7 +11,9 @@
   - A `neural network` is a series of algorithms that endeavors to recognize underlying relationships in a set of data through a process that mimics the way the human brain operates.
     ![](00-images/02-NeuralNetwork.png)
   - There are different types of neural networks for different types of task CNN,RNN,FNN,MNN.
-  - 
+  - `Encoder` takes inputs and creates vecotr representation as output.
+  - `Decoder` takes vector representation and creates output similar to Encoder Input.
+  - The combination of Encoder & Decoder can be used to auto train neural network and get desired weights for generating expected output.
 
 ## Abbreviations
 | Terminology         	| Description                                                                                                                                                                                                                                                                                                                                                                                                                                                           	|
