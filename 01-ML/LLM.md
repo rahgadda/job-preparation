@@ -7,6 +7,11 @@
 - An important subset of GAI is the `Generative Adversarial Network (GAN)`, introduced by Ian Goodfellow in 2014. GANs consist of two neural networks: a generator that produces synthetic data and a discriminator that distinguishes this data from real instances.
 - `Large Language Models (LLM)` also arose from the GAI subset. LLMs generate human-like text by predicting the likelihood of a word given the previous words used in the text.
 - `GPT, or Generative Pretrained Transformer`, is a specific type of LLM developed by OpenAI.  GPT models are trained on vast amounts of text data and can generate coherent, contextually relevant sentences.
+- Trasformers
+  - A `neural network` is a series of algorithms that endeavors to recognize underlying relationships in a set of data through a process that mimics the way the human brain operates.
+    ![](00-images/02-NeuralNetwork.png)
+  - There are different types of neural networks for different types of task CNN,RNN,FNN,MNN.
+  - 
 
 ## Abbreviations
 | Terminology         	| Description                                                                                                                                                                                                                                                                                                                                                                                                                                                           	|
