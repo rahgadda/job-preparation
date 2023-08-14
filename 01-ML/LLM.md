@@ -1,6 +1,12 @@
 # Large Language Model
 
 ## Overview
+- `Artificial Intelligence (AI)` is a broad discipline with roots in the 1950s, focused on creating machines capable of mimicking human intelligence. 
+- `Machine Learning`, a subset of AI, was developed in the 1980s. Its primary focus is on enabling machines to learn from data, improve their performance, and make decisions without explicit programming. 
+- `Generative AI (GAI)`, evolved from ML in the early 21st century, represents a class of algorithms capable of generating new data. They construct data that resembles the input, making them essential in fields like content creation and data augmentation.
+- An important subset of GAI is the `Generative Adversarial Network (GAN)`, introduced by Ian Goodfellow in 2014. GANs consist of two neural networks: a generator that produces synthetic data and a discriminator that distinguishes this data from real instances.
+- `Large Language Models (LLM)` also arose from the GAI subset. LLMs generate human-like text by predicting the likelihood of a word given the previous words used in the text.
+- `GPT, or Generative Pretrained Transformer`, is a specific type of LLM developed by OpenAI.  GPT models are trained on vast amounts of text data and can generate coherent, contextually relevant sentences.
 
 ## Abbreviations
 | Terminology         	| Description                                                                                                                                                                                                                                                                                                                                                                                                                                                           	|
