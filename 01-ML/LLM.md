@@ -7,11 +7,11 @@
 - An important subset of GAI is the `Generative Adversarial Network (GAN)`, introduced by Ian Goodfellow in 2014. GANs consist of two neural networks: a generator that produces synthetic data and a discriminator that distinguishes this data from real instances.
 - `Large Language Models (LLM)` also arose from the GAI subset. LLMs generate human-like text by predicting the likelihood of a word given the previous words used in the text.
 - `GPT, or Generative Pretrained Transformer`, is a specific type of LLM developed by OpenAI.  GPT models are trained on vast amounts of text data and can generate coherent, contextually relevant sentences.
-- Trasformers
+- `Transformers:`
   - A `neural network` is a series of algorithms that endeavors to recognize underlying relationships in a set of data through a process that mimics the way the human brain operates.
     ![](00-images/02-NeuralNetwork.png)
   - There are different types of neural networks for different types of task CNN,RNN,FNN,MNN.
-  - `Encoder` takes inputs and creates vecotr representation as output.
+  - `Encoder` takes inputs and creates vector representation as output.
   - `Decoder` takes vector representation and creates output similar to Encoder Input.
   - The combination of Encoder & Decoder can be used to auto train neural network and get desired weights for generating expected output.
 
@@ -35,3 +35,4 @@
 | Multi-modal LLM     	| An LLM that can process and generate text along with other types of media, such as images or audio.                                                                                                                                                                                                                                                                                                                                                                   	|
 ## References
 - [Huggingface NLP Course](https://huggingface.co/learn/nlp-course/chapter1/1)
+- [Fastai DeepLearning](https://course.fast.ai/)
