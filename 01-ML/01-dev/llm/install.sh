@@ -1,3 +1,3 @@
 #!/bin/bash
 
-pip install pandas
+pip install pandas transformers torch
