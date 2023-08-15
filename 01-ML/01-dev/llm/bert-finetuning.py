@@ -27,7 +27,7 @@ def generate_qa():
     Stanford_CoQA_Data= pd.DataFrame(temp_list, columns=cols)
 
     # -- Saving the dataframe to csv file for further loading
-    Stanford_CoQA_Data.to_csv("Stanford_ConversationalQA_Data.csv", index=False)
+    # Stanford_CoQA_Data.to_csv("Stanford_ConversationalQA_Data.csv", index=False)
     
     # -- Statistics
     Stanford_CoQA_Data.head()
