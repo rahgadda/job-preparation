@@ -8,6 +8,9 @@
 - `Large Language Models (LLM)` also arose from the GAI subset. LLMs generate human-like text by predicting the likelihood of a word given the previous words used in the text.
 - `GPT, or Generative Pretrained Transformer`, is a specific type of LLM developed by OpenAI.  GPT models are trained on vast amounts of text data and can generate coherent, contextually relevant sentences.
 - `Transformers:`
+  - Transformer models are used to solve all kinds of NLP tasks.
+  - The most basic object in the Transformers library is the pipeline() function. It connects a model with its necessary preprocessing and postprocessing steps, allowing us to directly input any text and get an intelligible answer
+    ![]() 
   - A `neural network` is a series of algorithms that endeavors to recognize underlying relationships in a set of data through a process that mimics the way the human brain operates.
     ![](00-images/02-NeuralNetwork.png)
   - There are different types of neural networks for different types of task CNN,RNN,FNN,MNN.
