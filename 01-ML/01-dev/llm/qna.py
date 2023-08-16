@@ -1,7 +1,9 @@
 from transformers import pipeline
 
+# Initializating Model with pipeline
 question_answer_model = pipeline("question-answering", model="distilbert-base-cased-distilled-squad")
 
+# Question n Answer Function
 def qna(question,context):
     print(
         question_answer_model ( 
@@ -10,7 +12,7 @@ def qna(question,context):
         )
     )
 
-
+# Main Function
 def main():
     # -- Question-1
     print("\n====================================================")
