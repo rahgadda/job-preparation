@@ -10,7 +10,7 @@
 - `Transformers:`
   - Transformer models are used to solve all kinds of NLP tasks.
   - The most basic object in the Transformers library is the pipeline() function. It connects a model with its necessary preprocessing and postprocessing steps, allowing us to directly input any text and get an intelligible answer
-    ![]() 
+    ![](/01-ML/00-images/03-pipeline.png) 
   - A `neural network` is a series of algorithms that endeavors to recognize underlying relationships in a set of data through a process that mimics the way the human brain operates.
     ![](00-images/02-NeuralNetwork.png)
   - There are different types of neural networks for different types of task CNN,RNN,FNN,MNN.
