@@ -1,2 +1,3 @@
 # Ignore all .csv files in all subdirectories
 /**/*.csv
+/**/__pycache__
