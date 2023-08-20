@@ -9,4 +9,4 @@ page_settings.initialLoad("Telangana Pollution Control Board","Welcome to PCB Co
 selected = page_settings.menu(["Dashboard",'Transactions','Setup'],['speedometer','activity', 'gear'])
 
 if selected=="Dashboard":
-    st.header("Hello")
+    st.title("Dashboard")
