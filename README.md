@@ -1,4 +1,4 @@
-# Job Preparation for 2023/24
+# Knowledge Base 2023/24
 
 # Overview
 - This was created in Aug 2023 to document the list of activities that I worked on for my Job Search.
