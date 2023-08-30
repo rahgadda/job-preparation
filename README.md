@@ -1,10 +1,10 @@
 # Knowledge Base 2023/24
 
 # Overview
-- This was created in Aug 2023 to document the list of activities that I worked on for my Job Search.
+- This was created in Aug 2023 to document the activities I worked on.
 - This document is categorized into below sections
   - `Machine Learning:` This will capture all the activities that I should complete to learn ML, Deep Learning, NLP, Vision
   - `User Interface:` This will cover everything from Node js, HTML, CSS, Components, UI Forms, Bundlers and Deployment utilities.
   - `Microserves:` Fundamentals of framework to create Microservices like Spring/Quarkus.
-  - `Tools:` Technical & Functional products which will be used by customers.
+  - `Tools:` Technical and functional products which customers will use.
     [![](https://mermaid.ink/img/pako:eNpdlMFum0AQhl9lxNmpDBgbc4vtQ5qEKg2Oeqh7GMPYrFh23WVxhaK8exdYbGwkJDTfzGj-f4f9dFKZkRM5f2vMFAq9zlHpnQDzaKY5wbPcQ0Ko0hxWDXhTb9bToeDBhRjTnAmCV5MmmDjeJXjwUZGC70KTOmBKd9iHmKVKmpQzS6m6ozPYSsltNEadVwDTCH5Pv80n5g3-QI_eGp1LAW6HFkHPLEKRYQXepWpxIVxq3oDfF3lj9KMuTw3MImhRGNxUNVvZ2hH0sO0Y-pZVKSuYfuCtEzC31eOE-BUe-VHC4lq8nFr2tDW0F9fOMrfhdZJYXf4o-pxYRbNRcJtYMZ0WG3wnTHUrxXYY4m-qA8GlywASLVWzl7JoFdhmoWWrWmScVNUKsGUD2hBnZ1INhBe0HIbFM46UuYOVyUmZfbHqWuIN5GeNqqirkcYLeqn3pARpqmzLIBz3fK-5IXYR3DFZoTbH1ncMb8gvqYoDl_-se8ubIV_wUKD1bx7cTEJNyiUW1sNFOIZrLIlbB5c32jaocY8VWQ-78f0BPoqK7c1_15u48McsloKZs2ktW_Z9x_QJMylPxlPjHLjT61LPhuVbv8fguteJOuBMnJJUiSwz18Bnm7hzdE4l7ZzIfGZ0wJrrnbMTXyYVay2TRqROpFVNE6c-Zahpw_CosHSiA_LKRClr54z7q6W7Yb7-A3dGNKM?type=png)](https://mermaid.live/edit#pako:eNpdlMFum0AQhl9lxNmpDBgbc4vtQ5qEKg2Oeqh7GMPYrFh23WVxhaK8exdYbGwkJDTfzGj-f4f9dFKZkRM5f2vMFAq9zlHpnQDzaKY5wbPcQ0Ko0hxWDXhTb9bToeDBhRjTnAmCV5MmmDjeJXjwUZGC70KTOmBKd9iHmKVKmpQzS6m6ozPYSsltNEadVwDTCH5Pv80n5g3-QI_eGp1LAW6HFkHPLEKRYQXepWpxIVxq3oDfF3lj9KMuTw3MImhRGNxUNVvZ2hH0sO0Y-pZVKSuYfuCtEzC31eOE-BUe-VHC4lq8nFr2tDW0F9fOMrfhdZJYXf4o-pxYRbNRcJtYMZ0WG3wnTHUrxXYY4m-qA8GlywASLVWzl7JoFdhmoWWrWmScVNUKsGUD2hBnZ1INhBe0HIbFM46UuYOVyUmZfbHqWuIN5GeNqqirkcYLeqn3pARpqmzLIBz3fK-5IXYR3DFZoTbH1ncMb8gvqYoDl_-se8ubIV_wUKD1bx7cTEJNyiUW1sNFOIZrLIlbB5c32jaocY8VWQ-78f0BPoqK7c1_15u48McsloKZs2ktW_Z9x_QJMylPxlPjHLjT61LPhuVbv8fguteJOuBMnJJUiSwz18Bnm7hzdE4l7ZzIfGZ0wJrrnbMTXyYVay2TRqROpFVNE6c-Zahpw_CosHSiA_LKRClr54z7q6W7Yb7-A3dGNKM)
