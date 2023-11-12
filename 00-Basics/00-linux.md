@@ -1,9 +1,8 @@
 # Linux Fundamentals
 
 ## Overview
-- There are multiple flavours of Linux. We will start learning Ubuntu.
-- We will be using [RaspberryPI 5](https://www.raspberrypi.com/products/raspberry-pi-5/) explore this tutorial.
-
+- There are multiple flavours of Linux. We will start learning `Ubuntu`.
+- We will be using [RaspberryPI 5](https://www.raspberrypi.com/products/raspberry-pi-5/) to explore this tutorial.
 
 ## Modules
 - Installation
