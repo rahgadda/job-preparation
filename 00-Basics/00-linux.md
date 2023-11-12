@@ -33,6 +33,12 @@
   - To avoid this, login to wifi router -> Network -> DHCP Server -> Address Reservation
   - Identify MAC ID of raspberry pi and start allocating an address range.
   - Reboot pi.
+- Enable network
+  ```bash
+  sudo apt update
+  sudo apt install net-tools
+  hostname
+  ```
 - Access Raspberry pi from Internet.
   - Login to [no-ip](https://www.noip.com/)
   - Goto Dynaic DNS -> Create Hostname
@@ -52,7 +58,7 @@
   ```bash
   vcgencmd measure_temp
   ```
-- Check Temperature
+- Check Voltage - Good if code is `0x0`
   ```bash
   vcgencmd get_throttled
   ```
