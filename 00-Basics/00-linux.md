@@ -5,20 +5,21 @@
 - We will be using [RaspberryPI 5](https://www.raspberrypi.com/products/raspberry-pi-5/) to explore this tutorial.
 
 ## Modules
-- Installation
+- [Installation](#installation)
 - Package Manager
-- System Init
+- [System Init](#system-init)
 - User & Roles
 - File System
 - Networking
 - Processes
 - Monitoring
 - Shell Scripting
+- [Commands](#commands)
 
 ### Installation
 - Download Raspberry Pi Imager from [here](https://www.raspberrypi.com/software/)
 - Load SD card and flash 64bit Ubuntu Server as below
-  - Operating System navigate: Other general-purpose OS -> Ubuntu -> Ubuntu Server 23.10 (64-BIT)
+  - Operating System navigate: `Other general-purpose OS -> Ubuntu -> Ubuntu Server 23.10 (64-BIT)`
   - Storage: Select Fash Drive
   - Setting: Configure below
     - hostname: `As per your desire`
@@ -29,8 +30,8 @@
     ![](../00-Images/pi-imager.png)
 - Static IP Address from Raspberry pi. 
   - This will change continuosly.
-  - To avoid this, login to wifi router -> Network -> DHCP Server -> Address Reservation
-  - Identify MAC ID of raspberry pi and start allocating an address range.
+  - To avoid this, login to `Wifi router -> Network -> DHCP Server -> Address Reservation`
+  - Identify `MAC ID` of raspberry pi and start allocating an address range.
   - Reboot pi.
 - Enable network
   ```bash
@@ -40,17 +41,26 @@
   ```
 - Access Raspberry pi from Internet.
   - Login to [no-ip](https://www.noip.com/)
-  - Goto Dynaic DNS -> Create Hostname
-  - Goto Wifi Router -> Dynamic DNS -> Register No-IP `UserName, Password, Domain` -> Enable WAN IP Binding. This step will help to automtically update Router public IP with No-IP Hostname.
-  - Goto Wifi Router -> Nat Forwarding -> DMZ -> Pi IP Address & Enable
-  ![](../00-Images/no-ip-hostname.png)
+  - Goto `Dynamic DNS -> Create Hostname`
+    ![](../00-Images/no-ip-hostname.png)
+  - Goto `Wifi Router -> Dynamic DNS -> Register No-IP UserName, Password, Domain & Enable WAN IP Binding`. This step will help to automtically update Router public IP with No-IP Hostname.
+  - Goto `Wifi Router -> Nat Forwarding -> DMZ -> Enter Pi IP Address & Enable`
 - Testing
-  - Windows Powershell Command -> Test-NetConnection `no-ip domain` -p 22
+  - Windows Powershell Command
+    ```powershell
+    Test-NetConnection `no-ip domain` -p 22
+    ```
 
 ### System Init
+- It is the first process on boot (as PID 1) and acts as init system that brings up and maintains userspace services.
 - `SystemD` is a system and service manager for Linux operating systems.
 - It serves as an init system, which means it is responsible for initializing the user space and managing system services during the boot process.
-- 
+- The most notable feature of SystemD was its parallelization capabilities and dependency-based service control logic, which allowed your system to start multiple processes in parallel, indirectly improving the boot time.
+- SystemD is frequently misunderstood as a `daemon`, but it’s actually a software suite for Linux. It offers `systemctl`, a command-line tool to manage system services, often referred to as `daemons` or `systemd units`, to help you with common system administrator tasks.
+- SystemD also introduces the concept of `units - a dependency system between various entities` to manage various services in your system, such as a service unit, mount unit, socket unit, slice unit, and so on, where units are referred to as configuration files.
+- All the registered services are available at `/etc/systemd/system`.
+- Before SystemD, `SystemV or Init` was used by Linux distros and `service` command is used by adminstrations to manage SystemV resources. Init services are availabel at `/etc/init.d/`
+- In Microsoft Windows world this is similar to `cmd -> msconfig`
 
 ### Commands
 - Check Temperature
