@@ -33,13 +33,13 @@
   - To avoid this, login to wifi router -> Network -> DHCP Server -> Address Reservation
   - Identify MAC ID of raspberry pi and start allocating an address range.
   - Reboot pi.
-  ![](../00-Images/no-ip-hostname.png)
 - Access Raspberry pi from Internet.
   - Login to [no-ip](https://www.noip.com/)
   - Goto Dynaic DNS -> Create Hostname
   - Goto Wifi Router -> Dynamic DNS -> Register No-IP `UserName, Password, Domain` -> Enable WAN IP Binding. This step will help to automtically update Router public IP with No-IP Hostname.
   - Goto Wifi Router -> Nat Forwarding -> DMZ -> Pi IP Address & Enable
-
+  ![](../00-Images/no-ip-hostname.png)
+  
 ### System Init
 - `SystemD` is a system and service manager for Linux operating systems.
 - It serves as an init system, which means it is responsible for initializing the user space and managing system services during the boot process.
