@@ -46,3 +46,13 @@
 - `SystemD` is a system and service manager for Linux operating systems.
 - It serves as an init system, which means it is responsible for initializing the user space and managing system services during the boot process.
 - 
+
+### Commands
+- Check Temperature
+  ```bash
+  vcgencmd measure_temp
+  ```
+- Check Temperature
+  ```bash
+  vcgencmd get_throttled
+  ```
