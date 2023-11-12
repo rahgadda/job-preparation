@@ -39,7 +39,9 @@
   - Goto Wifi Router -> Dynamic DNS -> Register No-IP `UserName, Password, Domain` -> Enable WAN IP Binding. This step will help to automtically update Router public IP with No-IP Hostname.
   - Goto Wifi Router -> Nat Forwarding -> DMZ -> Pi IP Address & Enable
   ![](../00-Images/no-ip-hostname.png)
-  
+- Testing
+  - Windows Powershell Command -> Test-NetConnection `no-ip domain` -p 22
+
 ### System Init
 - `SystemD` is a system and service manager for Linux operating systems.
 - It serves as an init system, which means it is responsible for initializing the user space and managing system services during the boot process.
