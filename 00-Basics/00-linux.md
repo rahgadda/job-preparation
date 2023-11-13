@@ -38,6 +38,8 @@
   sudo apt update
   sudo apt install net-tools
   hostname
+  ifconfig
+  shutdown now
   ```
 - Access Raspberry pi from Internet.
   - Login to [no-ip](https://www.noip.com/)
