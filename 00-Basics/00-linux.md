@@ -72,4 +72,6 @@
 - Check Voltage - Good if code is `0x0`
   ```bash
   vcgencmd get_throttled
+  dmesg | grep voltage
   ```
+  
