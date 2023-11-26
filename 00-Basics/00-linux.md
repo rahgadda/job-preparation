@@ -66,6 +66,10 @@
 - In Microsoft Windows world this is similar to `cmd -> msconfig`
 
 ### Commands
+- MAC ID
+  ```bash
+  ip addr show eth0
+  ```
 - Check Temperature
   ```bash
   vcgencmd measure_temp
@@ -75,6 +79,10 @@
   vcgencmd get_throttled
   dmesg | grep voltage
   ```
+- Boot loader configuration
+  ```bash
+  vcgencmd bootloader_config
+  ```   
 ### Reference
 - [PXE Preboot Execution Environment Booting](https://linuxhit.com/raspberry-pi-pxe-boot-netbooting-a-pi-4-without-an-sd-card/)
   
