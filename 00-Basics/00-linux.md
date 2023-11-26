@@ -76,5 +76,5 @@
   dmesg | grep voltage
   ```
 ### Reference
-- [PXE Booting](https://linuxhit.com/raspberry-pi-pxe-boot-netbooting-a-pi-4-without-an-sd-card/)
+- [PXE Preboot Execution Environment Booting](https://linuxhit.com/raspberry-pi-pxe-boot-netbooting-a-pi-4-without-an-sd-card/)
   
