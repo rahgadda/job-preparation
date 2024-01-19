@@ -1,6 +1,7 @@
 /*
 This document create Oracle Sample HR Schema 
 URL: https://github.com/oracle-samples/db-sample-schemas/blob/v23.2/human_resources/hr_populate.sql
+Others URL: https://www.sqltutorial.org/sql-sample-database/
 
 Table Details
 -------------
