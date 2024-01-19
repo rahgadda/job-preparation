@@ -26,5 +26,3 @@ else
     # Create PARQUET of database
     ./duckdb $db_file -c "EXPORT DATABASE '/workspace/knowledge-base/01-ML/03-projects/01-streamlit/01-DuckDB/hr.parquet' (FORMAT PARQUET);"
 fi
-
-
