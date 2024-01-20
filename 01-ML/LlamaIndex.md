@@ -36,7 +36,7 @@
 
 - [Llama Hub](https://llamahub.ai/) is a library of community-driven data loaders for LLMs.
 
-## Histroy
+## History
 - LlamaIndex was previously called GPTIndex.
 - LlamaIndex was created by `Jerry Liu` after experimenting with GPT-3 and looking for ways to mitigate the limitations of the model when working with his own personal data.
 - Liu open-sourced the project and publicly released it for the first time on `November 9, 2022`.
