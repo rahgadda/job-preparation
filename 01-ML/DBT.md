@@ -29,21 +29,29 @@
 - In Feb 2022 they received $222 million with a valuation of $4.2 Billion.
 
 ## Modules
-- Model
+- `Naming Convention:`
+  - `Sources (src):` Refer to the raw table data that have been built in the warehouse through a loading process. (We will cover configuring Sources in the Sources module)
+  - `Staging (stg):` refers to models that are built directly on top of sources. These have a one-to-one relationship with sources tables. These are used for very light transformations that shape the data into what you want it to be. These models are used to clean and standardize the data before transforming data downstream. Note: These are typically materialized as views.
+  - `Intermediate (int):` refers to any models that exist between final fact and dimension tables. These should be built on staging models rather than directly on sources to leverage the data cleaning that was done in staging.
+  - `Fact (fct):` refers to any data that represents something that occurred or is occurring. Examples include sessions, transactions, orders, stories, votes. These are typically skinny, long tables.
+  - `Dimension (dim):` refers to data that represents a person, place or thing. Examples include customers, products, candidates, buildings, employees.
+  ![](00-images/dbt_naming.png)
+
+- `Model:`
   - These are SQL statements with extenssion `.sql`.
   - Each represent one modular peice of logic that will take raw data and build final transform data.
   - Mostly each has on-to-one relationship with table or view in data warehouse. 
   - dbt will create DDL/DML automatically.
-  - Config block can be used to decalre result DDL is table or view. By default views are created.
+  - `Config` block can be used to decalre result DDL is table or view. By default views are created.
+    ```
+    {{ config(
+        materialized='table'
+    ) }}
+    ```
   - These are available in `models` folder.
   - `ref` functions are used to reference one model in another `{{ ref('stg_customers')}}`. These will be converted to actual tables during compilation.
-- Naming
-  - `Source:` Represent raw data that is already loaded.
-  - `Staging:` One to one replica of interested data.
-  - `Intermediate:` Not exposed to actual user but contains intermediate transformations. Always reference staging model.
-  - `Facts:` These are verbs that happend or going to happen like orders, payments
-  - `Dimension:` These are nouns like customers, vendor that does not change.
-  ![](00-images/dbt_naming.png)
+- `Commands:` [here](https://docs.getdbt.com/reference/commands/build)
+  
 
 ## Tutorial
 - [Offical Documentation](https://docs.getdbt.com/)
