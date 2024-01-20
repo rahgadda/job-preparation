@@ -1,0 +1,35 @@
+# LlamaIndex 
+
+## Overview
+- LLMs like GPT-4 come pre-trained on massive public datasets, allowing for incredible natural language processing capabilities out of the box. 
+- We would like this Generative AI feature on specific/private data. To do this, We can use tools like LlamaIndex - a data framework for Large Language Models (LLMs).
+- There are two mecahnism to make LLM work on private data
+  - `Fine Tunning`: It is a technique where a pre-trained LLM (like BERT) is further trained on a specific dataset related to a particular task.
+  - `Retrieval Augmented Generation (RAG)`: It is designed to augment LLM capabilities by retrieving relevant information from private knowledge sources before generating a response.
+    - Private data is loaded.
+    - Indexes are created on private data. This data can also be stored into Vector Databases.
+    - User queries act on the index, which filters your data down to the most relevant context.
+    - Context and your query then go to the LLM along with a prompt, and the LLM provides a response.
+    ![](00-images/basic_rag.png)
+    ![](00-images/SimpleRAGPattern.png)
+- LlamaIndex Platform empowers developers to spend less time managing infra & tuning parameters, and focus on AI product. 
+- It is complimentary framework to Lanchain and works as below to support RAG:
+  - Retrieves information from your data sources.
+  - Adds it to your question as context.
+  - Asks the LLM to answer based on the enriched prompt.
+- LlamaIndex supports below features
+  - `Data Connectors`: 
+    - Ingest data from APIs, databases, PDFs, and more.
+    - Sources of data often reffered as `Connectors or Readers`.
+    - Content extracted from connector like pdf etc is refered as `Document`.
+    - A chuck of document i.e. atomic unit of data is refered as `Node`.
+  - `Data Indexes`: 
+    - Organizing private data to make it easily understandble for LLM.
+    - Data is stored in a numerical representation called `embeddings`. These are used between LLM and LlamaIndex.
+    - Structure of data is called `vector embeddings` and stored in a database called `vector store`.
+  - `Query Engines`: Aids in finding and fetching the right pieces of data, making it possible to interact with your data using natural language and ultimately create applications and workflows.
+- [Llama Hub](https://llamahub.ai/) is a library of community-driven data loaders for LLMs.
+
+## Histroy
+
+## Reference
