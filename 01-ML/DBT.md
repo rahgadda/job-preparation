@@ -21,6 +21,7 @@
   - `Compiler`: Converts code into Raw SQL
   - `Runner`: Executes inside a datawarehouse
 - It works on below principles
+  ![](00-images/dt_overview.png)
   ![](00-images/dbt-how-it-works.png)
 
 ## History
