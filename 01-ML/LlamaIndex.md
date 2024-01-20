@@ -44,7 +44,13 @@
 - On June 6, 2023, Liu (CEO) and Suo (CTO) announced they had started a company around LlamaIndex and raised $8.5M in seed funding 
 
 ## Modules
-- 
+- LLM
+- Documents & Nodes
+- Embeddings
+- Retrivers
+- Node Postprocessors
+- Response Synthesizers
+- Indexes
 
 ## Tutorial
 - [Youtube - Discover LlamaIndex](https://www.youtube.com/playlist?list=PLTZkGHtR085ZjK1srrSZIrkeEzQiMjO9W)
