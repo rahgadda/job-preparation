@@ -2,14 +2,14 @@
 
 ## Overview
 - It is becomming a standard SQL tempalting process for Data Transformation in [ETL/ELT - Extract, Load, Transform] data pipelines.
-  - ETL
+  - `ETL:`
     - Used to extract data from different OLTP environment.
     - Transform the data to based on the destination format provided in OLAP environment.
     - Load the data into OLAP/Data Warehouse.
     - This centralized data was later used for Analytics, AI/ML or Down Stream Processing. 
     - Used by on-premise dataware house tools like infomatica etc...
     ![](00-images/ETL.png)
-  - ELT
+  - `ELT:`
     - Data from different OLTP environment is directly loaded into OLAP environment.
     - Transformation is then perfomed using elastic compute.
     - Used by cloud providers like Snowflake, Databricks etc...
