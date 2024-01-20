@@ -29,7 +29,21 @@
 - In Feb 2022 they received $222 million with a valuation of $4.2 Billion.
 
 ## Modules
-
+- Model
+  - These are SQL statements with extenssion `.sql`.
+  - Each represent one modular peice of logic that will take raw data and build final transform data.
+  - Mostly each has on-to-one relationship with table or view in data warehouse. 
+  - dbt will create DDL/DML automatically.
+  - Config block can be used to decalre result DDL is table or view. By default views are created.
+  - These are available in `models` folder.
+  - `ref` functions are used to reference one model in another `{{ ref('stg_customers')}}`. These will be converted to actual tables during compilation.
+- Naming
+  - `Source:` Represent raw data that is already loaded.
+  - `Staging:` One to one replica of interested data.
+  - `Intermediate:` Not exposed to actual user but contains intermediate transformations. Always reference staging model.
+  - `Facts:` These are verbs that happend or going to happen like orders, payments
+  - `Dimension:` These are nouns like customers, vendor that does not change.
+  ![](00-images/dbt_naming.png)
 
 ## Tutorial
 - [Offical Documentation](https://docs.getdbt.com/)
