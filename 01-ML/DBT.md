@@ -16,7 +16,12 @@
     ![](00-images/ELT.png)
 - It is an open-source command line tool that helps analysts and engineers transform data in their warehouse more effectively.
 - It enables analytics engineers to transform data in their warehouses by writing select statements, and turns these select statements into tables and views.
-- It uses YAML files to declare properties.
+- dbt code is a combination of `SQL` and `Jinja` - a common templating language.
+- At the most basic level, dbt has two components: 
+  - `Compiler`: Converts code into Raw SQL
+  - `Runner`: Executes inside a datawarehouse
+- It works on below principles
+  ![](00-images/dbt-how-it-works.png)
 
 ## History
 - It was founded by Fishtown Analytics (later named as dbt Labs) in 2016.
@@ -24,7 +29,10 @@
 - In Feb 2022 they received $222 million with a valuation of $4.2 Billion.
 
 ## Modules
+
+
 ## Tutorial
+- [Offical Documentation](https://docs.getdbt.com/)
 - [Offical Courses](https://courses.getdbt.com/collections/courses)
 - [Youtube - Playlist](https://www.youtube.com/playlist?list=PLohMhitTY9xuEVMpLG3xXhsKG9j2XCTeF)
 
