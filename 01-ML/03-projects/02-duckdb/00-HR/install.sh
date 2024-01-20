@@ -1,12 +1,17 @@
 #!/bin/bash
 
 # Installing Duckdb
+cd /workspace/knowledge-base/01-ML/03-projects/02-duckdb/00-HR
 wget https://github.com/duckdb/duckdb/releases/download/v0.9.2/duckdb_cli-linux-amd64.zip
 unzip duckdb_cli-linux-amd64.zip
 rm -rf duckdb_cli-linux-amd64.zip
 
 # Create Virutal Python Environment
-pip install SQLAlchemy llama-index
+sudo pip install virtualenv
+python -m venv hr_venv
+source hr_venv/bin/activate
+cd hr_venv
+source hr_venv/bin/deactivate
 
 # Set the database file name
 db_file="hr.db"

@@ -1,0 +1,4 @@
+sqlalchemy 
+llama-index
+streamlit
+streamlit_extras
