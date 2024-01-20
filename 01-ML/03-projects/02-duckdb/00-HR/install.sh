@@ -4,7 +4,9 @@
 wget https://github.com/duckdb/duckdb/releases/download/v0.9.2/duckdb_cli-linux-amd64.zip
 unzip duckdb_cli-linux-amd64.zip
 rm -rf duckdb_cli-linux-amd64.zip
-sudo pip install SQLAlchemy llama-index
+
+# Create Virutal Python Environment
+pip install SQLAlchemy llama-index
 
 # Set the database file name
 db_file="hr.db"
