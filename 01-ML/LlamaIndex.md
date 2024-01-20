@@ -27,9 +27,19 @@
     - Organizing private data to make it easily understandble for LLM.
     - Data is stored in a numerical representation called `embeddings`. These are used between LLM and LlamaIndex.
     - Structure of data is called `vector embeddings` and stored in a database called `vector store`.
-  - `Query Engines`: Aids in finding and fetching the right pieces of data, making it possible to interact with your data using natural language and ultimately create applications and workflows.
+  - `Query Engines`: 
+    - Aids in finding and fetching the right pieces of data, making it possible to interact with your data using natural language and ultimately create applications and workflows.
+    - A `retriever` defines how to efficiently retrieve relevant context from an index when given a query.
+    - A `router` determines which retriever will be used to retrieve relevant context from the knowledge base.
+    - A `node postprocessor` takes in a set of retrieved nodes and applies transformations, filtering, or re-ranking logic to them.
+    - A `response synthesizer` generates a response from an LLM, using a user query and a given set of retrieved text chunks.
+
 - [Llama Hub](https://llamahub.ai/) is a library of community-driven data loaders for LLMs.
 
 ## Histroy
 
+## Tutorial
+- [Youtube - Discover LlamaIndex](https://www.youtube.com/playlist?list=PLTZkGHtR085ZjK1srrSZIrkeEzQiMjO9W)
+
 ## Reference
+
