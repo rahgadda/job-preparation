@@ -50,7 +50,7 @@
     ```
   - These are available in `models` folder.
   - `ref` functions are used to reference one model in another `{{ ref('stg_customers')}}`. These will be converted to actual tables during compilation.
-- `Commands:` [here](https://docs.getdbt.com/reference/commands/build)
+- `Commands:` [Available here](https://docs.getdbt.com/reference/commands/build)
   
 
 ## Tutorial
