@@ -53,7 +53,8 @@
 - Indexes
 
 ## Tutorial
-- [Youtube - Discover LlamaIndex](https://www.youtube.com/playlist?list=PLTZkGHtR085ZjK1srrSZIrkeEzQiMjO9W)
+- [Youtube - Discover LlamaIndex](https://www.youtube.com/playlist?list=PLTZkGHtR085ZjK1srrSZIrkeEzQiMjO9W), [Git Repo](https://github.com/run-llama/llama_docs_bot)
+- [LlamaIndex Webinars](https://www.youtube.com/playlist?list=PLTZkGHtR085YK5CdOy8vAWQ7c-mUFzTBC)
 
 ## Reference
 - [Golden - Wiki](https://golden.com/wiki/LlamaIndex-6AYDZM9)
