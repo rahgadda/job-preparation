@@ -37,9 +37,17 @@
 - [Llama Hub](https://llamahub.ai/) is a library of community-driven data loaders for LLMs.
 
 ## Histroy
+- LlamaIndex was previously called GPTIndex.
+- LlamaIndex was created by `Jerry Liu` after experimenting with GPT-3 and looking for ways to mitigate the limitations of the model when working with his own personal data.
+- Liu open-sourced the project and publicly released it for the first time on `November 9, 2022`.
+- After two months of working on the project, Liu teamed up with his former colleague at Uber, Simon Suo, to build the product and community and develop a comprehensive framework for connecting user data with LLMs.
+- On June 6, 2023, Liu (CEO) and Suo (CTO) announced they had started a company around LlamaIndex and raised $8.5M in seed funding 
+
+## Modules
+- 
 
 ## Tutorial
 - [Youtube - Discover LlamaIndex](https://www.youtube.com/playlist?list=PLTZkGHtR085ZjK1srrSZIrkeEzQiMjO9W)
 
 ## Reference
-
+- [Golden - Wiki](https://golden.com/wiki/LlamaIndex-6AYDZM9)
