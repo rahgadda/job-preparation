@@ -60,7 +60,7 @@
       last_name
     from {{ source('jaffle_shop', 'customers') }}
     ```
-  - `sources.yml` can be used define source database, table name etc...
+  - `.yml` can be used define source database, table name etc...
     ```yaml
     version: 2
     sources:
@@ -76,7 +76,8 @@
               error_after: {count: 24, period: hour}
     ```
 - `Test:`
-  - Assertions to check if the data migration is getting done as planned.
+  - Assertions to check if the data migration is getting done as planned. 
+  - Tests are executed as SQL code.
   - Types
     - `Singular:` 
     - `Generic:` 
