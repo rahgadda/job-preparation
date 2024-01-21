@@ -67,6 +67,7 @@
 - `Indexes:`
 
 ## Tutorial
+- [Official Documentation](https://docs.llamaindex.ai/en/stable/)
 - [Youtube - Discover LlamaIndex](https://www.youtube.com/playlist?list=PLTZkGHtR085ZjK1srrSZIrkeEzQiMjO9W), [Git Repo](https://github.com/run-llama/llama_docs_bot)
 - [LlamaIndex Webinars](https://www.youtube.com/playlist?list=PLTZkGHtR085YK5CdOy8vAWQ7c-mUFzTBC)
 
