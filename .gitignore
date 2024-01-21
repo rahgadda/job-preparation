@@ -2,3 +2,4 @@
 /**/*.csv
 /**/__pycache__
 /**/duckdb
+/**/01_basic_shakesearch_venv
