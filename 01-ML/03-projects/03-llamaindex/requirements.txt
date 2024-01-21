@@ -1,4 +1,8 @@
 streamlit
+streamlit_extras
+pandas
+numpy
+torch
+git+https://github.com/huggingface/transformers
 sentence-transformers
 llama-index
-torch
