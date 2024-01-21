@@ -51,6 +51,40 @@
     ```
   - These are available in `models` folder.
   - `ref` functions are used to reference one model in another `{{ ref('stg_customers')}}`. These will be converted to actual tables during compilation.
+- `Source:`
+  - `source` functions are used to reference source tables.
+    ```sql
+    select 
+      id as customer_id,
+      first_name,
+      last_name
+    from {{ source('jaffle_shop', 'customers') }}
+    ```
+  - `sources.yml` can be used define source database, table name etc...
+    ```yaml
+    version: 2
+    sources:
+      - name: jaffle_shop
+        database: raw
+        schema: jaffle_shop
+        tables:
+          - name: customers
+          - name: orders
+            loaded_at_field: _etl_loaded_at
+            freshness:
+              warn_after: {count: 12, period: hour}
+              error_after: {count: 24, period: hour}
+    ```
+- `Test:`
+  - Assertions to check if the data migration is getting done as planned.
+  - Types
+    - `Singular:` 
+    - `Generic:` 
+      - Checks for below
+        - Unique
+        - Not Null
+        - Accepted Values
+        - Relationships
 - `Commands:` [Available here](https://docs.getdbt.com/reference/commands/build)
   
 
