@@ -32,8 +32,8 @@
   grant create schema on database analytics to role transformer;
 
   -- Grant wharehouse role
-  grant operator on wharehouse transforming to role transformer;
-  grant usage on wharehouse transforming to role transformer;
+  grant operator on warehouse transforming to role transformer;
+  grant usage on warehouse transforming to role transformer;
 
   -- Add role to user
   grant role transformer to user RAHGADDA;
