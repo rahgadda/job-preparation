@@ -5,5 +5,9 @@
 
 ## History
 ## Modules
+-
+
 ## Tutorial
+- [Configure Snowflake for dbt Cloud](https://www.youtube.com/watch?v=kbCkwhySV_I) 
+
 ## Refernce
