@@ -42,9 +42,12 @@
   -- Select warehouse as transforming
   -- Testing
   create or replace schema dbt_available;
-  create table analytics.dbt_available.customers as 
-  (select * from snowflake_sample_data.tpch_sf10.customers);
+  create table analytics.dbt_available.customer as 
+  (select * from snowflake_sample_data.tpch_sf10.customer);x
   drop schema analytics.dbt_available;
+
+  -- Dev env
+  create or replace schema dbt_rahgadda;
   ```
 
 ## Refernce
