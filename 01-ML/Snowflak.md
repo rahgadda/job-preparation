@@ -11,6 +11,28 @@
     - Hybrid Columnar, Automatic micro-partitioning, Physical data files that comprise Snowflake’s logical tables.
   - `Cloud Services Layer:`
     - Manages and coordinates activities across Snowflake.
+- Snowflake combines a completely new SQL query engine with an innovative architecture natively designed for the cloud.
+
+
+## Architecture
+- Its architecture is a hybrid of traditional shared-disk and shared-nothing database architectures.
+- Like shared-disk architectures, It uses a central data repository for persisted data that is `accessible from all compute nodes` in the platform.
+- Like shared-nothing architectures, It processes queries using `MPP (massively parallel processing)` compute clusters where each node in the cluster `stores a portion of the entire data set locally`.
+- This approach offers the data management simplicity of a shared-disk architecture, but with the performance and scale-out benefits of a shared-nothing architecture.
+- Snowflake architecture is based on three layers
+  - `Database Storage:`
+    - Snowflake re-organizes the loaded data into its internal optimized, compressed, columnar format.
+    - It manages all aspects of how this data is stored — the organization, file size, structure, compression, metadata, statistics, and other aspects.
+    - The data objects stored by Snowflake are not directly visible nor accessible by customers; they are only accessible through SQL query operations.
+  - `Query Processing:`
+    - It processes queries using `virtual warehouses`.
+    - Each virtual warehouse is an `MPP compute cluster` composed of multiple compute nodes allocated by Snowflake from a cloud provider.
+    - Each virtual warehouse is an independent compute cluster that does not share compute resources with other virtual warehouses.
+  - `Cloud Services:`
+    - The cloud services layer is a collection of services that coordinate activities across Snowflake.
+    - It also runs on compute instances provisioned by Snowflake from the cloud provider.
+
+![](00-images/snowflake-architecture-overview.png)
 
 ## History
 - Snowflake Inc. was founded in July 2012 in San Mateo, California by three data warehousing experts: Benoît Dageville, Thierry Cruanes and Marcin Żukowski.
