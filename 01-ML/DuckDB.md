@@ -48,6 +48,11 @@
 
   -- Dev env
   create or replace schema dbt_rahgadda;
+
+  -- Drop details
+  drop warehouse transforming;
+  drop database analytics;
+  drop role transformer;  
   ```
 
 ## Refernce
