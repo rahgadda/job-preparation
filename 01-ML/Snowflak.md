@@ -78,5 +78,9 @@
 - [Hands on Labs](https://www.snowflake.com/virtual-hands-on-lab/)
 - [Documentation](https://docs.snowflake.com/)
 
-## Refernce
+## Reference
 - [Apache Iceberg or Snowflake Table format](https://medium.com/snowflake/apache-iceberg-or-snowflake-table-format-299eb9fb7b0c)
+- [Deep dive - Virtual Warehouse](https://medium.com/snowflake/deep-dive-into-the-internals-of-snowflake-virtual-warehouses-d6d9676127d2)
+- [Snowflake: The Good, The Bad and The Ugly](https://0x0fff.com/snowflake-the-good-the-bad-and-the-ugly/)
+- [The Snowflake Elastic Data Warehouse - Published:14 June 2016](https://dl.acm.org/doi/pdf/10.1145/2882903.2903741)
+- [Lakehouse](https://www.cidrdb.org/cidr2021/papers/cidr2021_paper17.pdf)
