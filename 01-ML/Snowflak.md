@@ -79,4 +79,4 @@
 - [Documentation](https://docs.snowflake.com/)
 
 ## Refernce
-- 
+- [Apache Iceberg or Snowflake Table format](https://medium.com/snowflake/apache-iceberg-or-snowflake-table-format-299eb9fb7b0c)
