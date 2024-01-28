@@ -3,14 +3,6 @@
 ## Overview
 - Snowflake is a fully managed SaaS (software as a service) that provides a single platform for data warehousing, data lakes, data engineering, data science, data application development, and secure sharing and consumption of real-time / shared data.
   ![](00-images/snowflake_overview.png)
-- It is a three layer based architecture that can be deployed on AWS, GCP & Azure.
-  - `Compute (Virtual Warehouse) Layer:`​
-    - Snowflake processes queries using `virtual warehouses`.
-    - Each virtual warehouse is an MPP compute cluster composed of multiple compute nodes allocated by Snowflake from a cloud provider.
-  - `Storage Layer​:`
-    - Hybrid Columnar, Automatic micro-partitioning, Physical data files that comprise Snowflake’s logical tables.
-  - `Cloud Services Layer:`
-    - Manages and coordinates activities across Snowflake.
 - Snowflake combines a completely new SQL query engine with an innovative architecture natively designed for the cloud.
 
 
@@ -32,7 +24,7 @@
     - The cloud services layer is a collection of services that coordinate activities across Snowflake.
     - It also runs on compute instances provisioned by Snowflake from the cloud provider.
 
-![](00-images/snowflake-architecture-overview.png)
+  ![](00-images/snowflake-architecture-overview.png)
 
 ## History
 - Snowflake Inc. was founded in July 2012 in San Mateo, California by three data warehousing experts: Benoît Dageville, Thierry Cruanes and Marcin Żukowski.
