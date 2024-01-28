@@ -3,7 +3,7 @@
 ## Overview
 - Snowflake is a fully managed SaaS (software as a service) that provides a single platform for data warehousing, data lakes, data engineering, data science, data application development, and secure sharing and consumption of real-time / shared data.
   ![](00-images/snowflake_overview.png)
-- Snowflake combines a completely new SQL query engine with an innovative architecture natively designed for the cloud.
+- Snowflake combines a completely new SQL query engine - `SnowSQL` with an innovative architecture natively designed for the cloud.
 
 
 ## Architecture
@@ -76,6 +76,7 @@
 
 ## Tutorial
 - [Entry Level Guide](https://quickstarts.snowflake.com/guide/getting_started_with_snowflake/index.html#0)
+- [Hands on Labs](https://www.snowflake.com/virtual-hands-on-lab/)
 
 ## Refernce
 - 
