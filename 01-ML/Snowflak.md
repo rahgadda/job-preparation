@@ -5,7 +5,6 @@
   ![](00-images/snowflake_overview.png)
 - Snowflake combines a completely new SQL query engine - `SnowSQL` with an innovative architecture natively designed for the cloud.
 
-
 ## Architecture
 - Its architecture is a hybrid of traditional shared-disk and shared-nothing database architectures.
 - Like shared-disk architectures, It uses a central data repository for persisted data that is `accessible from all compute nodes` in the platform.
@@ -77,6 +76,7 @@
 ## Tutorial
 - [Entry Level Guide](https://quickstarts.snowflake.com/guide/getting_started_with_snowflake/index.html#0)
 - [Hands on Labs](https://www.snowflake.com/virtual-hands-on-lab/)
+- [Documentation](https://docs.snowflake.com/)
 
 ## Refernce
 - 
