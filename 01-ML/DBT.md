@@ -93,6 +93,7 @@
 - [Offical Documentation](https://docs.getdbt.com/)
 - [Offical Courses](https://courses.getdbt.com/collections/courses)
 - [Youtube - Playlist](https://www.youtube.com/playlist?list=PLohMhitTY9xuEVMpLG3xXhsKG9j2XCTeF)
+- [DBT with DuckDB](https://blog.det.life/transforming-data-engineering-a-deep-dive-into-dbt-with-duckdb-ddd3a0c1e0c2)
 
-## Refernce
+## Reference
 - [Official Site](https://www.getdbt.com/)
