@@ -7,7 +7,7 @@
     - Defined declartively to keep the orchestration code portable and language-agnostic. 
     - Defined in yaml.
     - It has three parts
-      - **Main:**
+      - **Mandatory:**
         - `id:` Name of the flow. Should be unique within a namespace.
         - `namespace:` Used to isolate environments like dev, prod.
         - `tasks:` 

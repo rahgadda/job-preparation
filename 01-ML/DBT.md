@@ -88,7 +88,6 @@
         - Relationships
 - `Commands:` [Available here](https://docs.getdbt.com/reference/commands/build)
   
-
 ## Tutorial
 - [Official Site](https://www.getdbt.com/)
 - [Offical Documentation](https://docs.getdbt.com/)
