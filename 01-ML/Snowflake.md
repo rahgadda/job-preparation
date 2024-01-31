@@ -77,6 +77,7 @@
 - [Entry Level Guide](https://quickstarts.snowflake.com/guide/getting_started_with_snowflake/index.html#0)
 - [Hands on Labs](https://www.snowflake.com/virtual-hands-on-lab/)
 - [Documentation](https://docs.snowflake.com/)
+- [Courses](https://learn.snowflake.com/en/courses/)
 
 ## Reference
 - [Apache Iceberg or Snowflake Table format](https://medium.com/snowflake/apache-iceberg-or-snowflake-table-format-299eb9fb7b0c)
