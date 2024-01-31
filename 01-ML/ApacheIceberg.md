@@ -1,4 +1,4 @@
-# Apache Iceberge
+# Apache Iceberg
 
 ## Overview
 ## History
