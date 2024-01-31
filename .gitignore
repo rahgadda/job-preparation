@@ -3,3 +3,4 @@
 /**/__pycache__
 /**/duckdb
 /**/01_basic_shakesearch_venv
+/**/docker-compose.yml
