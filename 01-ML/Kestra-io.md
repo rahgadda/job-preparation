@@ -16,8 +16,14 @@
   # http://localhost:8080/ui/welcome
   
   # Creating duckdb with parquet files
-  ```
 
+  ```
 ## Modules
+
+
 ## Tutorial
+- [Docs](https://kestra.io/docs)
+- [Demo](https://us.kestra.cloud/ui/login?from=/ui/demo/dashboard)
+- [Data Ingestion, Transformation and Orchestration](https://dev.to/kestra/end-to-end-data-ingestion-transformation-and-orchestration-with-airbyte-dbt-and-kestra-1lmo)
+
 ## Refernce
