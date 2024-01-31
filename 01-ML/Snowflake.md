@@ -7,8 +7,8 @@
 
 ## Architecture
 - Its architecture is a hybrid of traditional shared-disk and shared-nothing database architectures.
-- Like shared-disk architectures, It uses a central data repository for persisted data that is `accessible from all compute nodes` in the platform.
-- Like shared-nothing architectures, It processes queries using `MPP (massively parallel processing)` compute clusters where each node in the cluster `stores a portion of the entire data set locally`.
+  - Like shared-disk architectures, It uses a central data repository for persisted data that is `accessible from all compute nodes` in the platform.
+  - Like shared-nothing architectures, It processes queries using `MPP (massively parallel processing)` compute clusters where each node in the cluster `stores a portion of the entire data set locally`.
 - This approach offers the data management simplicity of a shared-disk architecture, but with the performance and scale-out benefits of a shared-nothing architecture.
 - Snowflake architecture is based on three layers
   - `Database Storage:`
@@ -86,3 +86,6 @@
 - [Snowflake: The Good, The Bad and The Ugly](https://0x0fff.com/snowflake-the-good-the-bad-and-the-ugly/)
 - [The Snowflake Elastic Data Warehouse - Published:14 June 2016](https://dl.acm.org/doi/pdf/10.1145/2882903.2903741)
 - [Lakehouse](https://www.cidrdb.org/cidr2021/papers/cidr2021_paper17.pdf)
+- [Salesforce Architects - What Architects Need to Know About Data Cloud](https://www.youtube.com/watch?v=Qr4jFtMFPyM)
+  ![](00-images/SalesforceDataCloud.png)
+  
