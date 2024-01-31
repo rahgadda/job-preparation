@@ -15,8 +15,9 @@
   # Deployment URL: 
   # http://localhost:8080/ui/welcome
   
-  # Creating duckdb with parquet files
-
+  # Creating duckdb with parquet files, transform with dbt and persist to snowflake
+  # Navigate to Flows -> Create -> 03-projects/Kestra-io/hello.yaml
+  # Open newly created flow ->  
   ```
 ## Modules
 
