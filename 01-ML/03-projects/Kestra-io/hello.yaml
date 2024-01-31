@@ -1,25 +1,18 @@
-id: read-parquet-transform
-namespace: company.team
-tasks:
-  - id: parquet_to_duckdb
-    type: io.kestra.plugin.jdbc.duckdb.Query
-    sql: |
-      INSTALL parquet;
-      LOAD parquet;
-      INSTALL httpfs;
-      LOAD httpfs;
-      SELECT 
-        e.employee_id,   
-        e.job_id,   
-        e.manager_id,   
-        e.department_id,  
-        d.location_id,
-      FROM read_parquet('https://github.com/rahgadda/knowledge-base/raw/main/01-ML/03-projects/02-duckdb/00-HR/hr.parquet/employees.parquet') e,
-           read_parquet('https://github.com/rahgadda/knowledge-base/raw/main/01-ML/03-projects/02-duckdb/00-HR/hr.parquet/departments.parquet') d,
-      WHERE 
-        e.department_id = d.department_id
-    fetch: true
+id: getting_started
+namespace: dev
 
-  - id: success_message
+description: |
+  # Getting Started
+  Let's `write` some **markdown** - [first flow](https://t.ly/Vemr0) 🚀
+
+labels:
+  owner: rick.astley
+  project: never-gonna-give-you-up
+
+tasks:
+  - id: hello_world
     type: io.kestra.core.tasks.log.Log
-    message: Duckdb with parquet created
+    message: Hello World!
+    description: |
+      ## About this task
+      This task will print "Hello World!" to the logs.
