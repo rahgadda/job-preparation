@@ -1,5 +1,5 @@
 id: read-parquet-transform
-namespace: company.team
+namespace: demo
 tasks:
   - id: parquet_to_duckdb
     type: io.kestra.plugin.jdbc.duckdb.Query
