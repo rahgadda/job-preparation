@@ -71,12 +71,13 @@
     - These outputs can be variables or files stored in the internal storage.
     - Outputs can be accessed using syntax `{{ outputs.task_id.output_property }}` or `{{ outputs['task-id'].output_property }}`
   - `Triggers:`
+    - 
   - `Flowable:`
   - `Errors & Retries:`
 - Variables
   - `{{ outputFiles }}` property allows to specify a list of files to be persisted in Kestra's internal storage. 
   - Files stored in `{{ outputDir }}` property will be persisted in Kestra's internal storage.
-  - Kestra will launch each task within a temporary working directory on a Worker. The `{{ WorkingDirectory }}` property  allows reusing the same file system's working directory across multiple tasks.
+  - Kestra will launch each task within a temporary working directory on a Worker. The `{{ workingDir }}` property  allows reusing the same file system's working directory across multiple tasks.
 
 ## History
 - Kestra started in 2019 with this initial commit. At this time, Kestra was at the proof-of-concept stage.
@@ -85,11 +86,30 @@
 - In 2019, Leroy Merlin and Adeo decided to move from an on-premise server to a cloud-based system. They needed a solution that could not only handle all the previous use cases, but improve upon them, and find a new way to work, all with an ambitious objective: being a fully cloud-based operation by 2022.
 - Leroy Merlin team started with `Google Composer`,`Apache Airflow` but found out they lacked features. 
 - Team realised limitation of available platforms and started building an opensource data migration pipeline `kestra.io` with Apache 2.0 licencing. More details are available [here](https://kestra.io/blogs/2022-02-01-kestra-opensource), [here](https://kestra.io/blogs/2022-02-22-leroy-merlin-usage-kestra)
-- Lead visioner is `Ludovic DEHON` and profile is available [here](https://www.linkedin.com/in/ludovic-dehon/?originalSubdomain=fr)
+- Lead visioner is `Ludovic Dehon` and profile is available [here](https://www.linkedin.com/in/ludovic-dehon/?originalSubdomain=fr)
 
 ## Architecture
-- 
+- Kestra's architecture is designed to be scalable, flexible and fault-tolerant.
+- It supports two architectures depending on backend used
+  - **JDBC:**
+    - `Building blocks:`
+      - `JDBC Backend:` Data storage layer used for orchestration metadata.
+      - `Server:`
+        - `Webserver:` Servers UI/API
+        - `Scheduler:` Schedules workflows and handles all triggers except for the flow triggers.
+        - `Executor:` Responsible for the orchestration logic including flow triggers.
+        - `Worker:` One or multiple processes that carry out the heavy computation of runnable tasks and polling triggers.
+    - Support multiple instances of the Webserver, Executor, Worker and Schedulor to handle increased load.
+    - JDBC Backend can be scaled using clustering or sharding.
+    - As workload increases, more instances of the required components can be added to the system to distribute the load and maintain performance.
+    - Scheduler is the only component that can only be run as a single instance, but this will change in the near future.
 
+    ![](00-images/kestra-jdbc.png)
+  - **Kafka:**
+    - Available only for Enterprise Edition.
+    - Can run multiple (horizontally scaled) instances of services such as Workers, Schedulers, Webservers and Executors to distribute load and maintain system performance as demand increases
+    
+    ![](00-images/kestra-kafka.png)
 ## Installation
 - Below are steps to load parquet data transform using DBT and persist into Snowflake
   ```bash
