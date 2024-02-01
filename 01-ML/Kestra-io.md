@@ -49,8 +49,7 @@
   # http://localhost:8080/ui/welcome
   
   # Creating duckdb with parquet files, transform with dbt and persist to snowflake
-  # Navigate to Flows -> Create -> 03-projects/Kestra-io/demo.yaml
-  #     Open New Flow -> Execute 
+  # Navigate to Flows -> Create -> 03-projects/Kestra-io/demo.yaml -> Execute 
   ```
 ## Modules
 
