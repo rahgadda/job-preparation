@@ -1,6 +1,7 @@
 # Kestra.io
 
 ## Overview
+- Companies build data pipelines to prepare data ingredients, extract insights, and distribute findings across internal and external parties.
 - Kestra is a universal open-source orchestrator that makes both scheduled and event-driven workflows easy.
 - Building blocks
   - `Flows:`
@@ -12,6 +13,7 @@
         - `namespace:` Used to isolate environments like dev, prod.
         - `tasks:` 
           - Atomic actions in flow.
+          - Stateless by default.
           - Tasks that will be executed in the order they are defined.
           - Tasks are defined in the form of a list.
           - By default, all tasks in the list will be executed sequentially
@@ -41,17 +43,52 @@
     - It contains below
       - **Mandatory:**
         - `name:` Variable name.
-        - `type:` Data type of varaiables. Supports STRING, INT - No decimal points, BOOLEAN - true or false. 
+        - `type:` Data type of varaiables. Supports STRING - not parsed, they are passed as-is, INT - No decimal points, BOOLEAN - true or false. 
       - **Optional**
         - `defaults:` Default value of input varaible to be considered if not provided.
         ```yaml
+        id: inputs_demo
+        namespace: dev
+
         inputs:
         - name: user
           type: STRING
           defaults: Rick Astley
+        - name: api_url
+          type: STRING
+          defaults: https://dummyjson.com/products
+
+        tasks:
+        - id: api
+          type: io.kestra.plugin.fs.http.Request
+          uri: "{{ inputs.api_url }}"
+        - id: hello
+          type: io.kestra.core.tasks.log.Log
+          message: Hey there, {{ inputs.user }}
         ```
+  - `Outputs:`
+    - Tasks and flows can generate outputs, which can be passed to downstream processes. 
+    - These outputs can be variables or files stored in the internal storage.
+    - Outputs can be accessed using syntax `{{ outputs.task_id.output_property }}` or `{{ outputs['task-id'].output_property }}`
+  - `Triggers:`
+  - `Flowable:`
+  - `Errors & Retries:`
+- Variables
+  - `{{ outputFiles }}` property allows to specify a list of files to be persisted in Kestra's internal storage. 
+  - Files stored in `{{ outputDir }}` property will be persisted in Kestra's internal storage.
+  - Kestra will launch each task within a temporary working directory on a Worker. The `{{ WorkingDirectory }}` property  allows reusing the same file system's working directory across multiple tasks.
 
 ## History
+- Kestra started in 2019 with this initial commit. At this time, Kestra was at the proof-of-concept stage.
+- `Adeo` is the leading French company in the international DIY and home improvement market.
+- `Leroy Merlin` is the leading brand of the Adeo Group and helps residents around the world with all their home improvement projects - from renovations and extensions, to decoration and repairs.
+- In 2019, Leroy Merlin and Adeo decided to move from an on-premise server to a cloud-based system. They needed a solution that could not only handle all the previous use cases, but improve upon them, and find a new way to work, all with an ambitious objective: being a fully cloud-based operation by 2022.
+- Leroy Merlin team started with `Google Composer`,`Apache Airflow` but found out they lacked features. 
+- Team realised limitation of available platforms and started building an opensource data migration pipeline `kestra.io` with Apache 2.0 licencing. More details are available [here](https://kestra.io/blogs/2022-02-01-kestra-opensource), [here](https://kestra.io/blogs/2022-02-22-leroy-merlin-usage-kestra)
+- Lead visioner is `Ludovic DEHON` and profile is available [here](https://www.linkedin.com/in/ludovic-dehon/?originalSubdomain=fr)
+
+## Architecture
+- 
 
 ## Installation
 - Below are steps to load parquet data transform using DBT and persist into Snowflake
@@ -74,6 +111,10 @@
 - [Plugins](https://kestra.io/plugins)
 - [Demo](https://us.kestra.cloud/ui/login?from=/ui/demo/dashboard)
 - [Data Ingestion, Transformation and Orchestration](https://dev.to/kestra/end-to-end-data-ingestion-transformation-and-orchestration-with-airbyte-dbt-and-kestra-1lmo)
+- [Intro to Kestra](https://medium.com/geekculture/intro-to-kestra-open-source-orchestration-and-scheduling-platform-a712f5238491)
+- [Restack - Kestra introduction](https://www.restack.io/docs/kestra-knowledge-kestra-tutorial-guide)
+- [Data lakehouse - Dremio, dbt and Python](https://kestra.io/blogs/2023-12-07-dremio-kestra-integration)
 
 ## Reference
+- [Linkedin - kestra](https://www.linkedin.com/company/kestra/)
 - [Airbyte - Connector based data replicator](https://airbyte.com/)
