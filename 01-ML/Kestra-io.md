@@ -60,4 +60,5 @@
 - [Demo](https://us.kestra.cloud/ui/login?from=/ui/demo/dashboard)
 - [Data Ingestion, Transformation and Orchestration](https://dev.to/kestra/end-to-end-data-ingestion-transformation-and-orchestration-with-airbyte-dbt-and-kestra-1lmo)
 
-## Refernce
+## Reference
+- [Airbyte - Connector based data replicator](https://airbyte.com/)
