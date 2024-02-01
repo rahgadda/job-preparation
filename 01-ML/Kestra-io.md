@@ -35,6 +35,21 @@
       - **Optional:**
         - `labels:` Another layer of organization, allowing you to group flows using key-value pairs.
         - `description:` Enhace flow documentation. Supports markdown syntax.
+  - `Inputs:`
+    - Used to declare variabels instead of hardcoding.
+    - Inputs can be accessed in any task using expression `{{ inputs.input_name }}`.
+    - It contains below
+      - **Mandatory:**
+        - `name:` Variable name.
+        - `type:` Data type of varaiables. Supports STRING, INT - No decimal points, BOOLEAN - true or false. 
+      - **Optional**
+        - `defaults:` Default value of input varaible to be considered if not provided.
+        ```yaml
+        inputs:
+        - name: user
+          type: STRING
+          defaults: Rick Astley
+        ```
 
 ## History
 
