@@ -136,5 +136,6 @@
 - [Data lakehouse - Dremio, dbt and Python](https://kestra.io/blogs/2023-12-07-dremio-kestra-integration)
 
 ## Reference
-- [Linkedin - kestra](https://www.linkedin.com/company/kestra/)
+- [Linkedin - Kestra.io](https://www.linkedin.com/company/kestra/)
 - [Airbyte - Connector based data replicator](https://airbyte.com/)
+- [Free kestra on Restack](https://www.restack.io/store/kestra)
