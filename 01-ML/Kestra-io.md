@@ -4,8 +4,12 @@
 - Companies build data pipelines to prepare data ingredients, extract insights, and distribute findings across internal and external parties.
 - Kestra is a universal open-source orchestrator that makes both scheduled and event-driven workflows easy.
 - Building blocks
+  - `Namespace:`
+    - Used for logical grouping of flows.
+    - the dot `.` symbol can add hierarchical structure to  namespaces.
   - `Flows:`
-    - Defined declartively to keep the orchestration code portable and language-agnostic. 
+    - Defined declartively to keep the orchestration code portable and language-agnostic.
+    - It is a container for tasks and and their orchestration logic, as well as labels, variables, inputs, outputs and triggers.
     - Defined in yaml.
     - It has three parts
       - **Mandatory:**
@@ -74,10 +78,33 @@
     - Used to automatically start flows based on events.
     - A trigger can be a scheduled date, a new file arrival, a new message in a queue, or the end of another flow's execution.
     - The trigger definition looks similar to the task definition — it contains an id, a type, and additional properties related to the specific trigger type.
+    - Kestra core provides three types of triggers. Component specific triggers are also available like new file created in S3.
+      - `Schedule:` Execute flow on a regular cadence e.g. using a CRON expression.
+      - `Flow:` Execute flow when another flow finishes its execution (based on a configurable list of states)
+      - `Webhook:` Execute low based on an HTTP request emitted by a webhook.
   - `Flowable:`
     - These tasks control the orchestration logic — run tasks or subflows in parallel, create loops and conditional branching.
-    - 
-  - `Errors & Retries:`
+  - `Errors:`
+    - Kestra provides automatic retries and error handling to help you build resilient workflows.
+    - Failure of any task will stop the execution and will mark it as failed.
+    - The `errors` property allows you to execute one or more actions before terminating the flow. 
+    - Errors handling can be implemented at flow or namespace level.
+  - `Retries:`
+    - Each task can be retried a certain number of times and in a specific way.
+    - `retry` property details retry stratery. 
+    - There are different types of retries
+      - `Constant:`
+        - The task will be retried every X seconds/minutes/hours/days.
+      - `Exponential:`
+        - The task will also be retried every X seconds/minutes/hours/day but with exponential time interval in between each retry attempt.
+      - `Random:`
+        - The task will be retried every X seconds/minutes/hours/days with a random delay.
+  - `Execution:`
+    - It is a single run of a flow in a specific state.
+    - Each task run can be in a particular state like CREATED, RUNNING, PAUSED, SUCCESS, WARNING, FAILED, KILLING, KILLED & RESTARTED
+  - `Variables:`
+    - Variables are key-value pairs that help reuse some values across tasks.
+    - Variables stored at names
 - Variables
   - `{{ outputFiles }}` property allows to specify a list of files to be persisted in Kestra's internal storage. 
   - Files stored in `{{ outputDir }}` property will be persisted in Kestra's internal storage.
@@ -114,6 +141,7 @@
     - Can run multiple (horizontally scaled) instances of services such as Workers, Schedulers, Webservers and Executors to distribute load and maintain system performance as demand increases
     
     ![](00-images/kestra-kafka.png)
+
 ## Installation
 - Below are steps to load parquet data transform using DBT and persist into Snowflake
   ```bash
@@ -127,8 +155,8 @@
   # Creating duckdb with parquet files, transform with dbt and persist to snowflake
   # Navigate to Flows -> Create -> 03-projects/Kestra-io/demo.yaml -> Execute 
   ```
-## Modules
 
+## Modules
 
 ## Tutorial
 - [Docs](https://kestra.io/docs)
