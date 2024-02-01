@@ -75,6 +75,8 @@
     - A trigger can be a scheduled date, a new file arrival, a new message in a queue, or the end of another flow's execution.
     - The trigger definition looks similar to the task definition — it contains an id, a type, and additional properties related to the specific trigger type.
   - `Flowable:`
+    - These tasks control the orchestration logic — run tasks or subflows in parallel, create loops and conditional branching.
+    - 
   - `Errors & Retries:`
 - Variables
   - `{{ outputFiles }}` property allows to specify a list of files to be persisted in Kestra's internal storage. 
