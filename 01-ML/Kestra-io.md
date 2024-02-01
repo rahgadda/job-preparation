@@ -71,7 +71,9 @@
     - These outputs can be variables or files stored in the internal storage.
     - Outputs can be accessed using syntax `{{ outputs.task_id.output_property }}` or `{{ outputs['task-id'].output_property }}`
   - `Triggers:`
-    - 
+    - Used to automatically start flows based on events.
+    - A trigger can be a scheduled date, a new file arrival, a new message in a queue, or the end of another flow's execution.
+    - The trigger definition looks similar to the task definition — it contains an id, a type, and additional properties related to the specific trigger type.
   - `Flowable:`
   - `Errors & Retries:`
 - Variables
