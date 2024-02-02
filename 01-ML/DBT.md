@@ -29,6 +29,16 @@
 - In 2018, the dbt Labs team released a commercial product on top of dbt Core.
 - In Feb 2022 they received $222 million with a valuation of $4.2 Billion.
 
+## DBT Core
+- It is an open-source command line tool that can be installed locally in your environment, and communicate with databases using adapters.
+- DBT Core building blocks
+  - Project creation steps:
+    ```bash
+    python3 -m venv  
+    ```
+  - `dbt_project.yml` is the starting point to identify profile, models, test etc...
+  - `profiles.yml` contains the connection details for your data platform
+
 ## Modules
 - `Naming Convention:`
   - `Sources (src):` Refer to the raw table data that have been built in the warehouse through a loading process. (We will cover configuring Sources in the Sources module)
@@ -37,7 +47,6 @@
   - `Fact (fct):` refers to any data that represents something that occurred or is occurring. Examples include sessions, transactions, orders, stories, votes. These are typically skinny, long tables.
   - `Dimension (dim):` refers to data that represents a person, place or thing. Examples include customers, products, candidates, buildings, employees.
   ![](00-images/dbt_naming.png)
-
 - `Model:`
   - These are SQL statements with extenssion `.sql`.
   - Each represent one modular peice of logic that will take raw data and build final transform data.
@@ -98,6 +107,6 @@
 - [Tutorialspoint](https://www.tutorialspoint.com/learn-dbt-data-build-tool/index.asp)
 
 ## Reference
-- [DBT with DuckDB](https://blog.det.life/transforming-data-engineering-a-deep-dive-into-dbt-with-duckdb-ddd3a0c1e0c2)
+- [DBT with DuckDB](https://blog.det.life/transforming-data-engineering-a-deep-dive-into-dbt-with-duckdb-ddd3a0c1e0c2), [Github here](https://github.com/fvgm-spec/learn_dbt/tree/main)
 - [DBT & DuckDB](https://medium.com/datamindedbe/use-dbt-and-duckdb-instead-of-spark-in-data-pipelines-9063a31ea2b5)
 - [DBT bigger than Spark](https://medium.com/datamindedbe/why-dbt-will-one-day-be-bigger-than-spark-2225cadbdad0)
