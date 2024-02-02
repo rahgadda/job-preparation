@@ -34,7 +34,20 @@
 - DBT Core building blocks
   - Project creation steps:
     ```bash
-    python3 -m venv  
+    cd 01-ML/03-projects/05-dbt
+
+    # Creating python virtual environment
+    python3 -m venv 00-hello
+    source 00-hello/bin/activate
+
+    # Installing dbt-duckdb
+    pip install dbt-duckdb
+
+    # Verification
+    dbt --version
+
+    # Creating project
+    dbt init
     ```
   - `dbt_project.yml` is the starting point to identify profile, models, test etc...
   - `profiles.yml` contains the connection details for your data platform
