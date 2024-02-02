@@ -1,4 +1,4 @@
-id: read-parquet-transform
+id: demo
 namespace: demo
 tasks:
   - id: parquet_to_duckdb
@@ -13,12 +13,13 @@ tasks:
         e.job_id,   
         e.manager_id,   
         e.department_id,  
-        d.location_id,
+        d.location_id
       FROM read_parquet('https://github.com/rahgadda/knowledge-base/raw/main/01-ML/03-projects/02-duckdb/00-HR/hr.parquet/employees.parquet') e,
            read_parquet('https://github.com/rahgadda/knowledge-base/raw/main/01-ML/03-projects/02-duckdb/00-HR/hr.parquet/departments.parquet') d,
       WHERE 
         e.department_id = d.department_id
     fetch: true
+    store: true
 
   - id: success_message
     type: io.kestra.core.tasks.log.Log
