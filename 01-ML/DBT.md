@@ -93,7 +93,9 @@
 - [Offical Documentation](https://docs.getdbt.com/)
 - [Offical Courses](https://courses.getdbt.com/collections/courses)
 - [Youtube - Playlist](https://www.youtube.com/playlist?list=PLohMhitTY9xuEVMpLG3xXhsKG9j2XCTeF)
+- [Youtube - Crash Course For Beginners](https://www.youtube.com/watch?v=toSAAgLUHuk)
 - [Youtube - DBT crash course for beginners: Zero to Hero](https://www.youtube.com/watch?v=C6BNAfaeqXY)
+- [Tutorialspoint](https://www.tutorialspoint.com/learn-dbt-data-build-tool/index.asp)
 
 ## Reference
 - [DBT with DuckDB](https://blog.det.life/transforming-data-engineering-a-deep-dive-into-dbt-with-duckdb-ddd3a0c1e0c2)
