@@ -47,7 +47,7 @@
     - It contains below
       - **Mandatory:**
         - `name:` Variable name.
-        - `type:` Data type of varaiables. Supports STRING - not parsed, they are passed as-is, INT - No decimal points, BOOLEAN - true or false. 
+        - `type:` Data type of varaiables. Supports STRING - not parsed, they are passed as-is, INT - No decimal points, BOOLEAN - true or false, FLOAT, DATETIME, DATE, DURATION, JSON, URI & FILE. 
       - **Optional**
         - `defaults:` Default value of input varaible to be considered if not provided.
         ```yaml
@@ -104,8 +104,17 @@
     - Each task run can be in a particular state like CREATED, RUNNING, PAUSED, SUCCESS, WARNING, FAILED, KILLING, KILLED & RESTARTED
   - `Variables:`
     - Variables are key-value pairs that help reuse some values across tasks.
-    - Variables stored at names
-- Variables
+    - Variables can also be stored on a namespace level so that they can be reused across multiple flows in a given namespace.
+    - Syntax for using variables is {{ vars.variable_name }}.
+    - These can be used in task properties documented as dynamic.
+  - `Task Defaults:`
+    - It is a list of default values applied to each task of a certain type within a flow(s).
+    - It helps to avoid repeating task properties on multiple occurrences of the same task.
+    - These are resolved at runtime and the editor is not aware of those default attributes until you run your flow.
+  - `Sub FLow:`
+    - It supports to build modular and reusable workflow components that can be called from a different flow.
+    - Task of type `io.kestra.core.tasks.flows.Subflow` should be created in caller flow and pass the specify `flowId` and `namespace` of the subflow that you want to execute.
+- Predefined Variables
   - `{{ outputFiles }}` property allows to specify a list of files to be persisted in Kestra's internal storage. 
   - Files stored in `{{ outputDir }}` property will be persisted in Kestra's internal storage.
   - Kestra will launch each task within a temporary working directory on a Worker. The `{{ workingDir }}` property  allows reusing the same file system's working directory across multiple tasks.
