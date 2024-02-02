@@ -40,8 +40,8 @@
     python3 -m venv 00-hello
     source 00-hello/bin/activate
 
-    # Installing dbt-duckdb
-    pip install dbt-duckdb
+    # Installing dbt-snowflake
+    pip install dbt-snowflake
 
     # Verification
     dbt --version
