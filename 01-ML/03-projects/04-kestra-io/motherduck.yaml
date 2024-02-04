@@ -1,0 +1,32 @@
+id: motherduck
+namespace: demo
+tasks:
+  - id: parquet_to_motherduck
+    type: io.kestra.plugin.jdbc.duckdb.Query
+    sql: |
+      INSTALL parquet;
+      LOAD parquet;
+      INSTALL httpfs;
+      LOAD httpfs;
+
+      SELECT 
+        e.employee_id,   
+        e.job_id,   
+        e.manager_id,   
+        e.department_id,  
+        d.location_id
+      FROM employees e,
+           departments d,
+      WHERE 
+        e.department_id = d.department_id
+    fetch: true
+    store: true
+
+  - id: success_message_motherduck
+    type: io.kestra.core.tasks.log.Log
+    message: MotherDuck with parquet created
+
+taskDefaults:
+  - type: io.kestra.plugin.jdbc.duckdb.Query
+    values:
+      url: "jdbc:duckdb:md:hr?motherduck_token='<<Secret>>'"
