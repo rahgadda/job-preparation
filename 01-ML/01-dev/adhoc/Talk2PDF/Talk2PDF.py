@@ -137,15 +137,15 @@ def fn_processing_pdf():
                 gv_processing_message.text(f"Processing page {lv_page_no} out of {lv_total_num_pages}...")
                 
                 lv_text = fn_read_pdf_page(lv_pdf, lv_page_no)
-                lv_embeddings = fn_create_embeddings(lv_text)
-                lv_faiss_index.add_with_ids(lv_embeddings, [{"page_no":lv_page_no}])
-                lv_metadata.append(lv_page_no)
+                # lv_embeddings = fn_create_embeddings(lv_text)
+                # lv_faiss_index.add_with_ids(lv_embeddings, [{"page_no":lv_page_no}])
+                # lv_metadata.append(lv_page_no)
 
                 print('Processing Page Content - '+str(lv_page_no)+" Started")
                 print(lv_text)
                 print('Processing Page Content - '+str(lv_page_no)+" Ended")
 
-            fn_save_faiss_index(lv_faiss_index, lv_metadata, lv_file_name)
+            # fn_save_faiss_index(lv_faiss_index, lv_metadata, lv_file_name)
 
 
 if gv_pdf_input_file is not None:
