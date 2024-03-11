@@ -1,4 +1,4 @@
 #!/bin/bash
 
-pip install streamlit pdfminer.six
+pip install streamlit pypdf
 streamlit run ./Talk2PDF.py
