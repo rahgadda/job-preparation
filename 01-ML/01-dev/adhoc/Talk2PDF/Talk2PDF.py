@@ -7,6 +7,7 @@ import PyPDF2
 from transformers import AutoTokenizer, AutoModelForCausalLM
 import faiss
 import numpy as np
+from langchain_community.embeddings import HuggingFaceEmbeddings
 
 
 # 0. Streamlit Settings
@@ -64,12 +65,12 @@ def fn_create_embeddings(lv_text):
 
     lv_model = AutoModelForCausalLM.from_pretrained("microsoft/phi-2", torch_dtype="auto", device_map="cpu", trust_remote_code=True)
     lv_tokenizer = AutoTokenizer.from_pretrained("microsoft/phi-2", trust_remote_code=True)
-    lv_inputs = lv_tokenizer(lv_text, return_tensors="pt", truncation=True)
 
-    with torch.no_grad():
-        lv_outputs = lv_model(**lv_inputs)
-    
-    lv_embeddings = lv_outputs.last_hidden_state.mean(dim=1).numpy()
+    lv_embeddings = HuggingFaceEmbeddings(
+      model_name="sentence-transformers/msmarco-distilbert-base-v4",
+      model_kwargs={'device': 'cpu'},
+      encode_kwargs={'normalize_embeddings': False}
+    )
     
     return lv_embeddings
 
@@ -137,7 +138,7 @@ def fn_processing_pdf():
                 gv_processing_message.text(f"Processing page {lv_page_no} out of {lv_total_num_pages}...")
                 
                 lv_text = fn_read_pdf_page(lv_pdf, lv_page_no)
-                # lv_embeddings = fn_create_embeddings(lv_text)
+                lv_embeddings = fn_create_embeddings(lv_text)
                 # lv_faiss_index.add_with_ids(lv_embeddings, [{"page_no":lv_page_no}])
                 # lv_metadata.append(lv_page_no)
 
