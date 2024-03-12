@@ -167,4 +167,5 @@ def main():
 
 # Calling Main Function
 if __name__ == '__main__':
+    commandline_args = os.environ.get('COMMANDLINE_ARGS', "--skip-torch-cuda-test --no-half")
     main()
