@@ -67,8 +67,7 @@ def fn_generate_QnA_response(mv_selected_model, mv_user_question, lv_vector_stor
     #                                   )
     lv_ms_phi2_pipeline = pipeline(
                                     "text-generation", tokenizer=lv_tokenizer, model=lv_model,
-                                    pad_token_id=lv_tokenizer.eos_token_id, eos_token_id=lv_tokenizer.eos_token_id,
-                                    device_map="cpu", max_new_tokens="4000", return_full_text=True
+                                    device_map="cpu", max_new_tokens=4000, return_full_text=True
                                   )
     lv_hf_phi2_pipeline = HuggingFacePipeline(pipeline=lv_ms_phi2_pipeline)
     lv_chain = ConversationalRetrievalChain.from_llm(lv_hf_phi2_pipeline, lv_vector_store.as_retriever(), return_source_documents=True)
