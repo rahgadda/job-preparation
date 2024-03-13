@@ -1,6 +1,8 @@
 import streamlit as st
 import tempfile
 import os
+import requests
+import time
 
 # Display user Error, Warning or Success Message
 def fn_display_user_messages(lv_text, lv_type, mv_processing_message):
@@ -19,21 +21,40 @@ def fn_display_user_messages(lv_text, lv_type, mv_processing_message):
         with mv_processing_message.container(): 
             st.info(lv_text)
 
-
 # Download TheBloke Models
 def fn_download_llm_models(mv_selected_model, mv_processing_message):
     """Download TheBloke Models"""
 
+    lv_download_url = ""
+
     print("Downloading TheBloke of "+mv_selected_model)
-    fn_display_user_messages("Downloading TheBloke of "+mv_selected_model, "Success", mv_processing_message)
+    fn_display_user_messages("Downloading TheBloke of "+mv_selected_model, "Info", mv_processing_message)
 
     if mv_selected_model == 'microsoft/phi-2':
-        print()
+        lv_download_url = "https://huggingface.co/TheBloke/phi-2-GGUF/blob/main/phi-2.Q2_K.gguf"
     elif mv_selected_model == 'mistralai/Mistral-7B-Instruct-v0.2':
-        print()
+        lv_download_url = "https://huggingface.co/TheBloke/Mistral-7B-Instruct-v0.2-GGUF/blob/main/mistral-7b-instruct-v0.2.Q2_K.gguf"
 
-    print("Download completed")
-    fn_display_user_messages("Model download completed","Info", mv_processing_message)
+    if not os.path.exists("model"):
+        os.makedirs("model")
+    
+    lv_filename = os.path.basename(lv_download_url)
+    if os.path.exists("model/"+lv_filename):
+        print("Model already available")
+        fn_display_user_messages("Model already available","Warning", mv_processing_message)
+    else:
+        lv_response = requests.get(lv_download_url, stream=True)
+        if lv_response.status_code == 200:
+            with open("model/"+lv_filename, 'wb') as f:
+                for chunk in lv_response.iter_content(chunk_size=1024):
+                    if chunk:
+                        f.write(chunk)
+            
+            print("Download completed")
+            fn_display_user_messages("Model download completed","Info", mv_processing_message)
+        else:
+            print(f"Model download completed {response.status_code}")
+            fn_display_user_messages(f"Model download completed {response.status_code}","Error", mv_processing_message)
 
 # Main Function
 def main():
