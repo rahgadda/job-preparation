@@ -3,6 +3,28 @@ import os
 import requests
 import time
 
+# Upload pdf file into 'pdf-data' folder if it does not exist
+def fn_upload_pdf(mv_pdf_input_file, mv_processing_message):
+    """Upload pdf file into 'pdf-data' folder if it does not exist"""
+
+    lv_file_name = mv_pdf_input_file.name
+
+    if not os.path.exists("pdf-data"):
+        os.makedirs("pdf-data")
+    
+    lv_temp_file_path = os.path.join("pdf-data",lv_file_name)
+    
+    if os.path.exists(lv_temp_file_path):
+        print("File already available")
+        fn_display_user_messages("File already available","Warning", mv_processing_message)
+    else:
+        with open(lv_temp_file_path,"wb") as lv_file:
+            lv_file.write(mv_pdf_input_file.getbuffer())
+    
+        print("Step1: PDF uploaded successfully at -> " + lv_temp_file_path)
+        fn_display_user_messages("Step1: PDF uploaded successfully at -> " + lv_temp_file_path, "Info", mv_processing_message)
+
+
 # Display user Error, Warning or Success Message
 def fn_display_user_messages(lv_text, lv_type, mv_processing_message):
     """Display user Info, Error, Warning or Success Message"""
@@ -38,13 +60,15 @@ def fn_download_llm_models(mv_selected_model, mv_processing_message):
         os.makedirs("model")
     
     lv_filename = os.path.basename(lv_download_url)
-    if os.path.exists("model/"+lv_filename):
+    lv_temp_file_path = os.path.join("model",lv_filename)
+
+    if os.path.exists(lv_temp_file_path):
         print("Model already available")
         fn_display_user_messages("Model already available","Warning", mv_processing_message)
     else:
         lv_response = requests.get(lv_download_url, stream=True)
         if lv_response.status_code == 200:
-            with open("model/"+lv_filename, 'wb') as f:
+            with open(lv_temp_file_path, 'wb') as f:
                 for chunk in lv_response.iter_content(chunk_size=1024):
                     if chunk:
                         f.write(chunk)
@@ -72,8 +96,12 @@ def main():
                                             'mistralai/Mistral-7B-Instruct-v0.2'
                                         ]
                                       )
-    st.text("")
     
+    # -- Display Supported Vector Stores
+    col1, col2, col3 = st.columns(3)
+    mv_selected_vector_db = col3.selectbox('Select Vector DB', ['FAISS'])
+    st.text("")
+
     # -- Reading PDF File
     col1, col2, col3 = st.columns(3)
     mv_pdf_input_file = col2.file_uploader("Choose a PDF file:", type=["pdf"])
@@ -91,6 +119,7 @@ def main():
     if (mv_pdf_input_file is not None):
 
         # -- Upload PDF
+        fn_upload_pdf(mv_pdf_input_file, mv_processing_message)
 
         # -- Create Vector Index
 
