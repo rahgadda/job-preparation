@@ -4,6 +4,8 @@ import os
 
 # Display user Error, Warning or Success Message
 def fn_display_user_messages(lv_text, lv_type, mv_processing_message):
+    """Display user Info, Error, Warning or Success Message"""
+    
     if lv_type == "Success":
         with mv_processing_message.container(): 
             st.success(lv_text)
@@ -16,6 +18,7 @@ def fn_display_user_messages(lv_text, lv_type, mv_processing_message):
     else:
         with mv_processing_message.container(): 
             st.info(lv_text)
+
 
 # Download TheBloke Models
 def fn_download_llm_models(mv_selected_model, mv_processing_message):
