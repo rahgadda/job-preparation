@@ -3,6 +3,7 @@ namespace: demo
 tasks:
   - id: parquet_to_motherduck
     type: io.kestra.plugin.jdbc.duckdb.Query
+    url: "jdbc:duckdb:md:hr?motherduck_token={{ secret('MOTHERDUCK_TOKEN') }}"
     sql: |
       INSTALL parquet;
       LOAD parquet;
@@ -25,8 +26,3 @@ tasks:
   - id: success_message_motherduck
     type: io.kestra.core.tasks.log.Log
     message: MotherDuck with parquet created
-
-taskDefaults:
-  - type: io.kestra.plugin.jdbc.duckdb.Query
-    values:
-      url: "jdbc:duckdb:md:hr?motherduck_token='<<Secret>>'"
