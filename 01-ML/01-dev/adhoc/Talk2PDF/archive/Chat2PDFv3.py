@@ -55,7 +55,7 @@ def fn_generate_QnA_response(mv_selected_model, mv_user_question, lv_vector_stor
     lv_tokenizer = AutoTokenizer.from_pretrained(mv_selected_model, trust_remote_code=True)
     lv_model = AutoModelForCausalLM.from_pretrained(
                                                         mv_selected_model, 
-                                                        torch_dtype="auto", 
+                                                        dtype=torch.float32, 
                                                         device_map="cpu", 
                                                         trust_remote_code=True
                                                    )
@@ -66,8 +66,8 @@ def fn_generate_QnA_response(mv_selected_model, mv_user_question, lv_vector_stor
     #                                         timeout=300.0
     #                                   )
     lv_ms_phi2_pipeline = pipeline(
-                                    "text-generation", tokenizer=lv_tokenizer, model=lv_model,
-                                    device_map="cpu", max_new_tokens=4000, return_full_text=True
+                                    "text-generation", tokenizer=lv_tokenizer, model=lv_model, dtype=torch.float32,
+                                    device_map="cpu", max_new_tokens=2048, return_full_text=True
                                   )
     lv_hf_phi2_pipeline = HuggingFacePipeline(pipeline=lv_ms_phi2_pipeline)
     lv_chain = ConversationalRetrievalChain.from_llm(lv_hf_phi2_pipeline, lv_vector_store.as_retriever(), return_source_documents=True)
@@ -113,9 +113,6 @@ def main():
         mv_temp_file_storage_dir = st.session_state.mv_temp_file_storage_dir
 
     mv_processing_message = col2.empty()
-    st.text("")
-    st.text("")
-    st.text("")
     st.text("")
     st.text("")
     st.text("")
@@ -167,5 +164,4 @@ def main():
 
 # Calling Main Function
 if __name__ == '__main__':
-    commandline_args = os.environ.get('COMMANDLINE_ARGS', "--skip-torch-cuda-test --no-half")
     main()
