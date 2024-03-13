@@ -1,5 +1,4 @@
 import streamlit as st
-import tempfile
 import os
 import requests
 import time
@@ -65,7 +64,7 @@ def main():
     col2.title("Chat with PDF")
     st.text("")
 
-    # -- Downloading Model Files
+    # -- Display Supported Models
     col1, col2, col3 = st.columns(3)
     mv_selected_model = col3.selectbox('Select Model',
                                         [
@@ -74,6 +73,7 @@ def main():
                                         ]
                                       )
     st.text("")
+    
     # -- Reading PDF File
     col1, col2, col3 = st.columns(3)
     mv_pdf_input_file = col2.file_uploader("Choose a PDF file:", type=["pdf"])
@@ -86,6 +86,19 @@ def main():
 
     # -- Downloading Model Files
     fn_download_llm_models(mv_selected_model, mv_processing_message)
+
+    # -- Processing PDF
+    if (mv_pdf_input_file is not None):
+
+        # -- Upload PDF
+
+        # -- Create Vector Index
+
+        # -- Perform RAG
+
+        # -- Validate Data
+
+        # -- Get Web Response
 
 # Calling Main Function
 if __name__ == '__main__':
