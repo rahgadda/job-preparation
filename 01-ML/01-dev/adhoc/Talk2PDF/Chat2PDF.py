@@ -31,9 +31,9 @@ def fn_download_llm_models(mv_selected_model, mv_processing_message):
     fn_display_user_messages("Downloading TheBloke of "+mv_selected_model, "Info", mv_processing_message)
 
     if mv_selected_model == 'microsoft/phi-2':
-        lv_download_url = "https://huggingface.co/TheBloke/phi-2-GGUF/blob/main/phi-2.Q2_K.gguf"
+        lv_download_url = "https://huggingface.co/TheBloke/phi-2-GGUF/resolve/main/phi-2.Q2_K.gguf"
     elif mv_selected_model == 'mistralai/Mistral-7B-Instruct-v0.2':
-        lv_download_url = "https://huggingface.co/TheBloke/Mistral-7B-Instruct-v0.2-GGUF/blob/main/mistral-7b-instruct-v0.2.Q2_K.gguf"
+        lv_download_url = "https://huggingface.co/TheBloke/Mistral-7B-Instruct-v0.2-GGUF/resolve/main/mistral-7b-instruct-v0.2.Q2_K.gguf"
 
     if not os.path.exists("model"):
         os.makedirs("model")
