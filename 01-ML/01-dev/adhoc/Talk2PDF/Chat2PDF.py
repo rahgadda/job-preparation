@@ -24,6 +24,22 @@ def fn_upload_pdf(mv_pdf_input_file, mv_processing_message):
         print("Step1: PDF uploaded successfully at -> " + lv_temp_file_path)
         fn_display_user_messages("Step1: PDF uploaded successfully at -> " + lv_temp_file_path, "Info", mv_processing_message)
 
+# Create Vector DB of uploaded PDF
+def fn_create_vector_db(mv_pdf_input_file, mv_processing_message):
+    """Create Vector DB of uploaded PDF"""
+
+    lv_file_name = mv_pdf_input_file.name[:-4] + ".vectorstore"
+
+    if not os.path.exists("vectordb/fiaas"):
+        os.makedirs("vectordb/fiaas")
+    
+    lv_temp_file_path = os.path.join("vectordb/fiaas",lv_file_name)
+    
+    if os.path.exists(lv_temp_file_path):
+        print("VectorDB already available for uploaded file")
+        fn_display_user_messages("VectorDB already available for uploaded file","Warning", mv_processing_message)
+    else:
+        
 
 # Display user Error, Warning or Success Message
 def fn_display_user_messages(lv_text, lv_type, mv_processing_message):
@@ -122,7 +138,7 @@ def main():
         fn_upload_pdf(mv_pdf_input_file, mv_processing_message)
 
         # -- Create Vector Index
-        
+
 
         # -- Perform RAG
 
