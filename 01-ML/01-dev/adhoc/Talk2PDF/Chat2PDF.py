@@ -3,6 +3,12 @@ import os
 import requests
 import time
 
+from langchain.document_loaders import PyPDFLoader
+from langchain.text_splitter import CharacterTextSplitter
+from langchain.embeddings import HuggingFaceEmbeddings
+from langchain.vectorstores.faiss import FAISS
+
+
 # Upload pdf file into 'pdf-data' folder if it does not exist
 def fn_upload_pdf(mv_pdf_input_file, mv_processing_message):
     """Upload pdf file into 'pdf-data' folder if it does not exist"""
@@ -34,12 +40,44 @@ def fn_create_vector_db(mv_pdf_input_file, mv_processing_message):
         os.makedirs("vectordb/fiaas")
     
     lv_temp_file_path = os.path.join("vectordb/fiaas",lv_file_name)
+    lv_embeddings = HuggingFaceEmbeddings(
+                                            model_name="sentence-transformers/all-mpnet-base-v2",
+                                            model_kwargs={'device': 'cpu'}
+                                        )
     
     if os.path.exists(lv_temp_file_path):
         print("VectorDB already available for uploaded file")
         fn_display_user_messages("VectorDB already available for uploaded file","Warning", mv_processing_message)
+
+        lv_vector_store = FAISS.load_local(lv_temp_file_path, lv_embeddings,allow_dangerous_deserialization=True)
+        return lv_vector_store
     else:
+        lv_temp_pdf_file_path = os.path.join("pdf-data",mv_pdf_input_file.name)
         
+        # -- Loading PDF Data
+        lv_pdf_loader = PyPDFLoader(lv_temp_pdf_file_path)
+        lv_pdf_content = lv_pdf_loader.load()
+        print("Step2: PDF content extracted")
+        fn_display_user_messages("Step2: PDF content extracted", "Info", mv_processing_message)
+
+        # -- Chunking PDF Data
+        lv_text_splitter = CharacterTextSplitter(
+                                                    separator="\n",
+                                                    chunk_size=300,
+                                                    chunk_overlap=30,
+                                                    length_function=len
+                                                )
+        lv_pdf_chunk_documents = lv_text_splitter.split_documents(lv_pdf_content)
+        print("Step3: PDF content chucked and document object created")
+        fn_display_user_messages("Step3: PDF content chucked and document object created", "Info", mv_processing_message)
+
+        # -- Creating FIASS Vector Store
+        lv_vector_store = FAISS.from_documents(lv_pdf_chunk_documents, lv_embeddings)
+        print("Step4: Vector store created")
+        fn_display_user_messages("Step4: Vector store created", "Info", mv_processing_message)
+        lv_vector_store.save_local(lv_temp_file_path)
+
+        return lv_vector_store
 
 # Display user Error, Warning or Success Message
 def fn_display_user_messages(lv_text, lv_type, mv_processing_message):
@@ -138,7 +176,7 @@ def main():
         fn_upload_pdf(mv_pdf_input_file, mv_processing_message)
 
         # -- Create Vector Index
-
+        lv_vector_store = fn_create_vector_db(mv_pdf_input_file, mv_processing_message)
 
         # -- Perform RAG
 
