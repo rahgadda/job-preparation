@@ -4,13 +4,13 @@ import requests
 import time
 import sys
 
-from langchain.document_loaders import PyPDFLoader
+from langchain_community.document_loaders import PyPDFLoader
 from langchain.text_splitter import CharacterTextSplitter
-from langchain.embeddings import HuggingFaceEmbeddings
+from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain.vectorstores.faiss import FAISS
 
 from langchain.prompts.prompt import PromptTemplate
-from langchain.llms import CTransformers
+from langchain_community.llms import CTransformers
 from langchain.chains import RetrievalQA
 
 # Upload pdf file into 'pdf-data' folder if it does not exist
