@@ -2,12 +2,16 @@ import streamlit as st
 import os
 import requests
 import time
+import sys
 
 from langchain.document_loaders import PyPDFLoader
 from langchain.text_splitter import CharacterTextSplitter
 from langchain.embeddings import HuggingFaceEmbeddings
 from langchain.vectorstores.faiss import FAISS
 
+from langchain.prompts.prompt import PromptTemplate
+from langchain.llms import CTransformers
+from langchain.chains import RetrievalQA
 
 # Upload pdf file into 'pdf-data' folder if it does not exist
 def fn_upload_pdf(mv_pdf_input_file, mv_processing_message):
@@ -133,6 +137,59 @@ def fn_download_llm_models(mv_selected_model, mv_processing_message):
             print(f"Model download completed {response.status_code}")
             fn_display_user_messages(f"Model download completed {response.status_code}","Error", mv_processing_message)
 
+# Function return QA Response using Vector Store
+def fn_generate_QnA_response(mv_selected_model, mv_user_question, lv_vector_store, mv_processing_message):
+    """Returns QA Response using Vector Store"""
+
+    lv_model_path = ""
+    lv_model_type = ""
+    lv_template   = """Instruction:
+                    You are an AI assistant for answering questions about the provided context.
+                    You are given the following extracted parts of a long document and a question. Provide a detailed answer.
+                    If you don't know the answer, just say "Hmm, I'm not sure." Don't try to make up an answer.
+                    =======
+                    {context}
+                    =======
+                    Question: {question}
+                    Output:\n"""
+    lv_qa_prompt = PromptTemplate(
+                                template=lv_template,
+                                input_variables=["question", "context"]
+                              )
+
+    if mv_selected_model == 'microsoft/phi-2':
+        lv_model_path = "model/phi-2.Q2_K.gguf"
+        lv_model_type = "pi"
+    elif mv_selected_model == 'mistralai/Mistral-7B-Instruct-v0.2':
+        lv_model_path = "model/mistral-7b-instruct-v0.2.Q2_K.gguf"
+        lv_model_type = "mistral"
+
+    print("Model Absolute location -" +lv_model_path)
+    
+    print("Step4: Generating LLM response")
+    fn_display_user_messages("Step4: Generating LLM response","Info", mv_processing_message)
+
+    lv_model = CTransformers(
+                                model="model/mistral-7b-instruct-v0.2.Q2_K.gguf",
+                                model_type=lv_model_type,
+                                max_new_tokens=2048,
+                                temperature=0.00
+                            )
+    lv_retriever = lv_vector_store.as_retriever(search_kwargs={'k': 2})
+    lv_qa_chain = RetrievalQA.from_chain_type(  llm=lv_model,
+                                                chain_type='stuff',
+                                                retriever=lv_retriever,
+                                                return_source_documents=True,
+                                                chain_type_kwargs={'prompt': lv_qa_prompt}
+                                              )
+
+    lv_response = lv_qa_chain({"query": mv_user_question})
+
+    print("Step5: LLM response generated")
+    fn_display_user_messages("Step5: LLM response generated","Info", mv_processing_message)
+
+    return lv_response['result']
+
 # Main Function
 def main():
     
@@ -141,6 +198,10 @@ def main():
     col1, col2, col3 = st.columns(3)
     col2.title("Chat with PDF")
     st.text("")
+
+    # -- Initialize chat history
+    if "messages" not in st.session_state:
+        st.session_state.messages = []
 
     # -- Display Supported Models
     col1, col2, col3 = st.columns(3)
@@ -179,6 +240,25 @@ def main():
         lv_vector_store = fn_create_vector_db(mv_pdf_input_file, mv_processing_message)
 
         # -- Perform RAG
+        col1, col2, col3 = st.columns(3)
+        st.text("")
+        lv_chat_history = col2.chat_message
+        st.text("")
+
+        if mv_user_question := col2.chat_input("Chat on PDF Data"):
+           # -- Add user message to chat history
+           st.session_state.messages.append({"role": "user", "content": mv_user_question})
+
+           # -- Generating LLM response
+           lv_response = fn_generate_QnA_response(mv_selected_model, mv_user_question, lv_vector_store, mv_processing_message)
+
+           # -- Adding assistant response to chat history
+           st.session_state.messages.append({"role": "assistant", "content": lv_response})
+        
+           # -- Display chat messages from history on app rerun
+           for message in st.session_state.messages:
+               with lv_chat_history(message["role"]):
+                   st.markdown(message["content"])
 
         # -- Validate Data
 

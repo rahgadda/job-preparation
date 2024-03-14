@@ -52,7 +52,7 @@ def fn_generate_QnA_response(mv_selected_model, mv_user_question, lv_vector_stor
     mv_processing_message.text("Step4: Generating LLM response")
 
     lv_tokenizer = AutoTokenizer.from_pretrained(
-                                                        mv_selected_model, 
+                                                        mv_selected_model,
                                                         model_max_length=2048,
                                                         trust_remote_code=True
                                                 )
