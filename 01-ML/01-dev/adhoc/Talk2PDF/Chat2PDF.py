@@ -1,7 +1,6 @@
 import streamlit as st
 import os
 import requests
-import re
 
 from langchain_community.document_loaders import PyPDFLoader
 from langchain.text_splitter import CharacterTextSplitter
@@ -177,9 +176,10 @@ def fn_generate_QnA_response(mv_selected_model, mv_user_question, lv_vector_stor
                             temperature=0.00,
                             max_tokens=2048,
                             top_p=1,
+                            n_ctx=2048,
                             verbose=False
                        )
-    lv_retriever = lv_vector_store.as_retriever(search_kwargs={'k': 2})
+    # lv_retriever = lv_vector_store.as_retriever(search_kwargs={'k': 2})
     
     # lv_qa_chain = RetrievalQA.from_chain_type(  llm=lv_model,
     #                                             chain_type='stuff',
@@ -190,10 +190,11 @@ def fn_generate_QnA_response(mv_selected_model, mv_user_question, lv_vector_stor
 
     # lv_response = lv_qa_chain({"query": mv_user_question})
 
-    lv1=lv_retriever(mv_user_question)
+    lv1=lv_vector_store.similarity_search(mv_user_question)
     print(lv1)
-    lv2=lv_qa_prompt.format(  question=mv_user_question,
-                                context=lv_retriever(mv_user_question)
+    lv2=lv_qa_prompt.format(  
+                                question=mv_user_question,
+                                context=lv1
                            )
     print(lv2)
     print(lv_model(lv2))
