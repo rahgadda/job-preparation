@@ -180,19 +180,22 @@ def fn_generate_QnA_response(mv_selected_model, mv_user_question, lv_vector_stor
                             verbose=False
                        )
     lv_retriever = lv_vector_store.as_retriever(search_kwargs={'k': 2})
-    lv_qa_chain = RetrievalQA.from_chain_type(  llm=lv_model,
-                                                chain_type='stuff',
-                                                retriever=lv_retriever,
-                                                return_source_documents=True,
-                                                chain_type_kwargs={'prompt': lv_qa_prompt}
-                                              )
+    
+    # lv_qa_chain = RetrievalQA.from_chain_type(  llm=lv_model,
+    #                                             chain_type='stuff',
+    #                                             retriever=lv_retriever,
+    #                                             return_source_documents=True,
+    #                                             chain_type_kwargs={'prompt': lv_qa_prompt}
+    #                                           )
 
-    lv_response = lv_qa_chain({"query": mv_user_question})
+    # lv_response = lv_qa_chain({"query": mv_user_question})
+
+    print(lv_retriever(mv_user_question))
 
     print("Step5: LLM response generated")
     fn_display_user_messages("Step5: LLM response generated","Info", mv_processing_message)
 
-    return lv_response['result']
+    return "hello"
 
 # Main Function
 def main():
