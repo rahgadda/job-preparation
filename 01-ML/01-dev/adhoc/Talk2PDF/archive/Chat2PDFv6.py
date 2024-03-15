@@ -190,7 +190,13 @@ def fn_generate_QnA_response(mv_selected_model, mv_user_question, lv_vector_stor
 
     # lv_response = lv_qa_chain({"query": mv_user_question})
 
-    print(lv_retriever(mv_user_question))
+    lv1=lv_retriever(mv_user_question)
+    print(lv1)
+    lv2=lv_qa_prompt.format(  question=mv_user_question,
+                                context=lv_retriever(mv_user_question)
+                           )
+    print(lv2)
+    print(lv_model(lv2))
 
     print("Step5: LLM response generated")
     fn_display_user_messages("Step5: LLM response generated","Info", mv_processing_message)
