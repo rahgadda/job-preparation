@@ -1,8 +1,10 @@
 import streamlit as st
 import os
 import requests
+import re
 
 from langchain_community.document_loaders import PyPDFLoader
+from langchain.docstore.document import Document
 from langchain.text_splitter import CharacterTextSplitter
 from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain.vectorstores.faiss import FAISS
@@ -59,6 +61,24 @@ def fn_create_vector_db(mv_pdf_input_file, mv_processing_message):
         # -- Loading PDF Data
         lv_pdf_loader = PyPDFLoader(lv_temp_pdf_file_path)
         lv_pdf_content = lv_pdf_loader.load()
+
+        # -- Define patterns with flexibility
+        pattern1 = r"(\w+)-\n(\w+)"  # Match hyphenated words separated by a line break
+        pattern2 = r"(?<!\n\s)\n(?!\s\n)"  # Match line breaks not surrounded by whitespace
+        pattern3 = r"\n\s*\n"  # Match multiple line breaks with optional whitespace
+
+        lv_pdf_formatted_content = []
+        for lv_page in lv_pdf_content:
+            # -- Apply substitutions with flexibility
+            lv_pdf_page_content = re.sub(pattern1, r"\1\2", lv_page.page_content)
+            lv_pdf_page_content = re.sub(pattern2, " ", lv_pdf_page_content.strip())
+            lv_pdf_page_content = re.sub(pattern3, " ", lv_pdf_page_content)
+            lv_pdf_page_content = re.sub("\n", " ", lv_pdf_page_content)
+
+            lv_pdf_formatted_content.append(Document( page_content= lv_pdf_page_content,
+                                                      metadata= lv_page.metadata)
+                                           )
+
         print("Step2: PDF content extracted")
         fn_display_user_messages("Step2: PDF content extracted", "Info", mv_processing_message)
 
@@ -69,7 +89,7 @@ def fn_create_vector_db(mv_pdf_input_file, mv_processing_message):
                                                     chunk_overlap=30,
                                                     length_function=len
                                                 )
-        lv_pdf_chunk_documents = lv_text_splitter.split_documents(lv_pdf_content)
+        lv_pdf_chunk_documents = lv_text_splitter.split_documents(lv_pdf_formatted_content)
         print("Step3: PDF content chucked and document object created")
         fn_display_user_messages("Step3: PDF content chucked and document object created", "Info", mv_processing_message)
 
@@ -166,8 +186,7 @@ def fn_generate_QnA_response(mv_selected_model, mv_user_question, lv_vector_stor
     elif mv_selected_model == 'mistralai/Mistral-7B-Instruct-v0.2':
         lv_model_path = "model/mistral-7b-instruct-v0.2.Q2_K.gguf"
         lv_model_type = "mistral"
-    
-    
+        
     print("Step4: Generating LLM response")
     fn_display_user_messages("Step4: Generating LLM response","Info", mv_processing_message)
 
@@ -179,30 +198,31 @@ def fn_generate_QnA_response(mv_selected_model, mv_user_question, lv_vector_stor
                             n_ctx=2048,
                             verbose=False
                        )
-    # lv_retriever = lv_vector_store.as_retriever(search_kwargs={'k': 2})
-    
-    # lv_qa_chain = RetrievalQA.from_chain_type(  llm=lv_model,
-    #                                             chain_type='stuff',
-    #                                             retriever=lv_retriever,
-    #                                             return_source_documents=True,
-    #                                             chain_type_kwargs={'prompt': lv_qa_prompt}
-    #                                           )
+    lv_vector_search_result = lv_vector_store.similarity_search(mv_user_question, k=2)
+    # print("Vector Search Result - ")
+    # print(lv_vector_search_result)
 
-    # lv_response = lv_qa_chain({"query": mv_user_question})
+    # -- Creating formatted document result
+    lv_document_context = ""
+    for lv_result in lv_vector_search_result:
+        lv_document_context += lv_result.page_content 
 
-    lv1=lv_vector_store.similarity_search(mv_user_question)
-    print(lv1)
-    lv2=lv_qa_prompt.format(  
-                                question=mv_user_question,
-                                context=lv1
-                           )
-    print(lv2)
-    print(lv_model(lv2))
+    # print("Formatted Document Search Result - ")
+    # print(lv_document_context)
+
+    lv_qa_formatted_prompt = lv_qa_prompt.format(  
+                                            question=mv_user_question,
+                                            context=lv_document_context
+                                         )
+    print("Formatted Prompt - " + lv_qa_formatted_prompt)
+
+    lv_llm_response = lv_model(lv_qa_formatted_prompt)
+    # print("LLM Response" +lv_llm_response)
 
     print("Step5: LLM response generated")
     fn_display_user_messages("Step5: LLM response generated","Info", mv_processing_message)
 
-    return "hello"
+    return lv_llm_response
 
 # Main Function
 def main():
