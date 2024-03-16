@@ -70,7 +70,7 @@ def fn_create_vector_db(mv_pdf_input_file, mv_processing_message):
         lv_pdf_formatted_content = []
         for lv_page in lv_pdf_content:
             # -- Apply substitutions with flexibility
-            lv_pdf_page_content = re.sub(pattern1," ", lv_page.page_content)
+            lv_pdf_page_content = re.sub(pattern1, r"\1\2", lv_page.page_content)
             lv_pdf_page_content = re.sub(pattern2, " ", lv_pdf_page_content.strip())
             lv_pdf_page_content = re.sub(pattern3, " ", lv_pdf_page_content)
             lv_pdf_page_content = re.sub("\n", " ", lv_pdf_page_content)
