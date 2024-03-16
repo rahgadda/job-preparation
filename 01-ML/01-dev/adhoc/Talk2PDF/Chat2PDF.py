@@ -70,7 +70,7 @@ def fn_create_vector_db(mv_pdf_input_file, mv_processing_message):
         lv_pdf_formatted_content = []
         for lv_page in lv_pdf_content:
             # -- Apply substitutions with flexibility
-            lv_pdf_page_content = re.sub(pattern1, r"\1\2", lv_page.page_content)
+            lv_pdf_page_content = re.sub(pattern1," ", lv_page.page_content)
             lv_pdf_page_content = re.sub(pattern2, " ", lv_pdf_page_content.strip())
             lv_pdf_page_content = re.sub(pattern3, " ", lv_pdf_page_content)
             lv_pdf_page_content = re.sub("\n", " ", lv_pdf_page_content)
@@ -78,6 +78,8 @@ def fn_create_vector_db(mv_pdf_input_file, mv_processing_message):
             lv_pdf_formatted_content.append(Document( page_content= lv_pdf_page_content,
                                                       metadata= lv_page.metadata)
                                            )
+            
+            print("Page Details of "+str(lv_page.metadata)+" is - "+lv_pdf_page_content)
 
         print("Step2: PDF content extracted")
         fn_display_user_messages("Step2: PDF content extracted", "Info", mv_processing_message)
@@ -204,8 +206,11 @@ def fn_generate_QnA_response(mv_selected_model, mv_user_question, lv_vector_stor
 
     # -- Creating formatted document result
     lv_document_context = ""
+    count = 0
     for lv_result in lv_vector_search_result:
+        print(count)
         lv_document_context += lv_result.page_content 
+        count += 1
 
     # print("Formatted Document Search Result - ")
     # print(lv_document_context)
