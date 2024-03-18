@@ -208,7 +208,7 @@ def fn_generate_QnA_response(mv_selected_model, mv_user_question, lv_vector_stor
     lv_document_context = ""
     lv_count = 0
     for lv_result in lv_vector_search_result:
-        print("Concatenating Result of page - " + str(lv_count))
+        print("Concatenating Result of page - " + str(lv_count) + " with content of document page no - "+str(lv_result.metadata["page"]))
         lv_document_context += lv_result.page_content 
         lv_count += 1
 
