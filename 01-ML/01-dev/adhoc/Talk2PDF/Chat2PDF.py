@@ -206,11 +206,11 @@ def fn_generate_QnA_response(mv_selected_model, mv_user_question, lv_vector_stor
 
     # -- Creating formatted document result
     lv_document_context = ""
-    count = 0
+    lv_count = 0
     for lv_result in lv_vector_search_result:
-        print(count)
+        print("Concatenating Result of page - " + str(lv_count))
         lv_document_context += lv_result.page_content 
-        count += 1
+        lv_count += 1
 
     # print("Formatted Document Search Result - ")
     # print(lv_document_context)
