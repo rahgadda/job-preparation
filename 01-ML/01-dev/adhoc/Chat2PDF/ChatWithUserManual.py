@@ -4,6 +4,7 @@ import streamlit as st
 import google.generativeai as genai
 from dotenv import load_dotenv
 
+from langchain_community.document_loaders import TextLoader
 from langchain_community.document_loaders import PyPDFLoader
 from langchain.docstore.document import Document
 
@@ -49,6 +50,38 @@ def fn_upload_pdf(mv_pdf_input_file, mv_processing_message):
         print("Step1: PDF uploaded successfully at -> " + lv_temp_file_path)
         fn_display_user_messages("Step1: PDF uploaded successfully at -> " + lv_temp_file_path, "Info", mv_processing_message)
 
+# Load PDF data as Text File
+def fn_process_pf_data(mv_pdf_input_file, mv_processing_message):
+    """Load PDF data as Text File"""
+
+    # -- Create txt folder inside vectordb folder if it does not exist
+    if not os.path.exists(os.path.join("vectordb","txt")):
+        os.makedirs(os.path.join("vectordb","txt"))
+
+    lv_file_name = mv_pdf_input_file.name[:-4] + ".txt"
+    lv_temp_file_path = os.path.join(os.path.join("vectordb","txt"),lv_file_name)
+
+    if os.path.isfile(lv_temp_file_path):
+        lv_pdf_formatted_content = TextLoader(lv_temp_file_path)
+        print("Step2: Processed file details exists")
+        fn_display_user_messages("Step2: Processed file details exists", "Warning", mv_processing_message)
+    else:
+        lv_pdf_formatted_content = fn_extract_pdf_data(mv_pdf_input_file, mv_processing_message)
+        lv_text_data = ""
+        
+        for lv_page in lv_pdf_formatted_content:
+            # print(lv_page.page_content)
+            lv_text_data = lv_text_data + lv_page.page_content
+        
+
+        # print(lv_text_data)
+        f = open(lv_temp_file_path, "w")
+        f.write(lv_text_data)
+        f.close()
+    
+    return lv_pdf_formatted_content
+
+
 # Extract uploaded pdf data
 def fn_extract_pdf_data(mv_pdf_input_file, mv_processing_message):
     """Extract uploaded pdf data"""
@@ -83,6 +116,8 @@ def fn_extract_pdf_data(mv_pdf_input_file, mv_processing_message):
 
     print("Step2: PDF content extracted")
     fn_display_user_messages("Step2: PDF content extracted", "Info", mv_processing_message)
+
+    return lv_pdf_formatted_content
 
 # Main Program
 def main():
@@ -134,7 +169,7 @@ def main():
         if col1.button("Submit"):
             if mv_pdf_input_file is not None:
                 fn_upload_pdf(mv_pdf_input_file, mv_processing_message)
-                fn_extract_pdf_data(mv_pdf_input_file, mv_processing_message)
+                lv_pdf_page_content = fn_process_pf_data(mv_pdf_input_file, mv_processing_message)
             else:
                 fn_display_user_messages("Upload PDF file before clicking on Submit", "Error", mv_processing_message)
 
