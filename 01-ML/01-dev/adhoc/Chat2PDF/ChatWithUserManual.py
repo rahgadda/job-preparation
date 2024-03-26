@@ -8,6 +8,7 @@ from langchain_community.document_loaders import TextLoader
 from langchain_community.document_loaders import PyPDFLoader
 from langchain.docstore.document import Document
 from langchain import PromptTemplate
+from langchain_google_genai import ChatGoogleGenerativeAI
 
 # Loading Google Gemini API Key from Environment Variables
 load_dotenv()
@@ -121,53 +122,38 @@ def fn_generate_QnA_response(mv_user_question, mv_pdf_input_file, mv_processing_
 
     print("Step4: Generating LLM response")
     fn_display_user_messages("Step4: Generating LLM response","Info", mv_processing_message)
+
+    lv_template   = """Instruction:
+                    You are an AI assistant for answering questions about the provided context.
+                    You are given the following extracted parts of a long document and a question. Provide a detailed answer.
+                    If you don't know the answer, just say "Hmm, I'm not sure." Don't try to make up an answer.
+                    =======
+                    {context}
+                    =======
+                    Question: {question}
+                    Output:\n"""
     
-    lv_safety_settings = [
-                            {
-                                "category": "HARM_CATEGORY_HARASSMENT",
-                                "threshold": "BLOCK_MEDIUM_AND_ABOVE"
-                            },
-                            {
-                                "category": "HARM_CATEGORY_HATE_SPEECH",
-                                "threshold": "BLOCK_MEDIUM_AND_ABOVE"
-                            },
-                            {
-                                "category": "HARM_CATEGORY_SEXUALLY_EXPLICIT",
-                                "threshold": "BLOCK_MEDIUM_AND_ABOVE"
-                            },
-                            {
-                                "category": "HARM_CATEGORY_DANGEROUS_CONTENT",
-                                "threshold": "BLOCK_MEDIUM_AND_ABOVE"
-                            },
-                    ]
-    lv_generation_config = {
-                                "temperature": 0.9,
-                                "top_p": 1,
-                                "top_k": 1
-                           }
-    lv_model = genai.GenerativeModel(
-                                        model_name="gemini-1.0-pro",
-                                        generation_config=lv_generation_config,
-                                        safety_settings=lv_safety_settings
-                                    )
+    lv_qa_prompt = PromptTemplate(
+                                    template=lv_template,
+                                    input_variables=["question", "context"]
+                                 )    
+    lv_model = ChatGoogleGenerativeAI(model="gemini-pro",
+                 temperature=0.7, top_p=0.85)
 
     lv_file_name = mv_pdf_input_file.name[:-4] + ".txt"
     lv_temp_file_path = os.path.join(os.path.join("vectordb","txt"),lv_file_name)
     lv_text_loader = TextLoader(lv_temp_file_path)
     lv_pdf_formatted_content = lv_text_loader.load()
-    
     lv_text_data = ""    
     for lv_page in lv_pdf_formatted_content:
         lv_text_data = lv_text_data + lv_page.page_content
 
-    lv_history = {
-                    "role": "model",
-                    "parts": [lv_text_data]
-                 }
-    lv_llm_response = lv_model.start_chat(
-                                            history=[lv_history]
-                                         ).send_message(mv_user_question)
-                                    
+    lv_qa_formatted_prompt = lv_qa_prompt.format(  
+                                                    question=mv_user_question,
+                                                    context=lv_text_data
+                                                )
+    
+    lv_llm_response = lv_model.invoke(lv_qa_formatted_prompt)
 
     print("Step5: LLM response generated")
     fn_display_user_messages("Step5: LLM response generated","Info", mv_processing_message)
@@ -225,7 +211,7 @@ def main():
 
         # -- Saving LLM Response
         st.session_state.messages.append(
-            {"role": "model", "content": lv_response}
+            {"role": "agent", "content": lv_response}
         )
 
         # -- Display chat messages from history
