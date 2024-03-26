@@ -7,6 +7,7 @@ from dotenv import load_dotenv
 from langchain_community.document_loaders import TextLoader
 from langchain_community.document_loaders import PyPDFLoader
 from langchain.docstore.document import Document
+from langchain import PromptTemplate
 
 # Loading Google Gemini API Key from Environment Variables
 load_dotenv()
@@ -50,38 +51,6 @@ def fn_upload_pdf(mv_pdf_input_file, mv_processing_message):
         print("Step1: PDF uploaded successfully at -> " + lv_temp_file_path)
         fn_display_user_messages("Step1: PDF uploaded successfully at -> " + lv_temp_file_path, "Info", mv_processing_message)
 
-# Load PDF data as Text File
-def fn_process_pf_data(mv_pdf_input_file, mv_processing_message):
-    """Load PDF data as Text File"""
-
-    # -- Create txt folder inside vectordb folder if it does not exist
-    if not os.path.exists(os.path.join("vectordb","txt")):
-        os.makedirs(os.path.join("vectordb","txt"))
-
-    lv_file_name = mv_pdf_input_file.name[:-4] + ".txt"
-    lv_temp_file_path = os.path.join(os.path.join("vectordb","txt"),lv_file_name)
-
-    if os.path.isfile(lv_temp_file_path):
-        lv_pdf_formatted_content = TextLoader(lv_temp_file_path)
-        print("Step2: Processed file details exists")
-        fn_display_user_messages("Step2: Processed file details exists", "Warning", mv_processing_message)
-    else:
-        lv_pdf_formatted_content = fn_extract_pdf_data(mv_pdf_input_file, mv_processing_message)
-        lv_text_data = ""
-        
-        for lv_page in lv_pdf_formatted_content:
-            # print(lv_page.page_content)
-            lv_text_data = lv_text_data + lv_page.page_content
-        
-
-        # print(lv_text_data)
-        f = open(lv_temp_file_path, "w")
-        f.write(lv_text_data)
-        f.close()
-    
-    return lv_pdf_formatted_content
-
-
 # Extract uploaded pdf data
 def fn_extract_pdf_data(mv_pdf_input_file, mv_processing_message):
     """Extract uploaded pdf data"""
@@ -119,6 +88,93 @@ def fn_extract_pdf_data(mv_pdf_input_file, mv_processing_message):
 
     return lv_pdf_formatted_content
 
+# Load PDF data as Text File
+def fn_process_pf_data(mv_pdf_input_file, mv_processing_message):
+    """Load PDF data as Text File"""
+
+    # -- Create txt folder inside vectordb folder if it does not exist
+    if not os.path.exists(os.path.join("vectordb","txt")):
+        os.makedirs(os.path.join("vectordb","txt"))
+
+    lv_file_name = mv_pdf_input_file.name[:-4] + ".txt"
+    lv_temp_file_path = os.path.join(os.path.join("vectordb","txt"),lv_file_name)
+
+    if os.path.isfile(lv_temp_file_path):
+        print("Step2: Processed file details exists")
+        fn_display_user_messages("Step2: Processed file details exists", "Warning", mv_processing_message)
+    else:
+        lv_pdf_formatted_content = fn_extract_pdf_data(mv_pdf_input_file, mv_processing_message)
+        lv_text_data = ""
+        
+        for lv_page in lv_pdf_formatted_content:
+            # print(lv_page.page_content)
+            lv_text_data = lv_text_data + lv_page.page_content
+        
+        # print(lv_text_data)
+        f = open(lv_temp_file_path, "w")
+        f.write(lv_text_data)
+        f.close()
+
+# Return QA Response
+def fn_generate_QnA_response(mv_user_question, mv_pdf_input_file, mv_processing_message):
+    """Returns QA Response"""
+
+    print("Step4: Generating LLM response")
+    fn_display_user_messages("Step4: Generating LLM response","Info", mv_processing_message)
+    
+    lv_safety_settings = [
+                            {
+                                "category": "HARM_CATEGORY_HARASSMENT",
+                                "threshold": "BLOCK_MEDIUM_AND_ABOVE"
+                            },
+                            {
+                                "category": "HARM_CATEGORY_HATE_SPEECH",
+                                "threshold": "BLOCK_MEDIUM_AND_ABOVE"
+                            },
+                            {
+                                "category": "HARM_CATEGORY_SEXUALLY_EXPLICIT",
+                                "threshold": "BLOCK_MEDIUM_AND_ABOVE"
+                            },
+                            {
+                                "category": "HARM_CATEGORY_DANGEROUS_CONTENT",
+                                "threshold": "BLOCK_MEDIUM_AND_ABOVE"
+                            },
+                    ]
+    lv_generation_config = {
+                                "temperature": 0.9,
+                                "top_p": 1,
+                                "top_k": 1
+                           }
+    lv_model = genai.GenerativeModel(
+                                        model_name="gemini-1.0-pro",
+                                        generation_config=lv_generation_config,
+                                        safety_settings=lv_safety_settings
+                                    )
+
+    lv_file_name = mv_pdf_input_file.name[:-4] + ".txt"
+    lv_temp_file_path = os.path.join(os.path.join("vectordb","txt"),lv_file_name)
+    lv_text_loader = TextLoader(lv_temp_file_path)
+    lv_pdf_formatted_content = lv_text_loader.load()
+    
+    lv_text_data = ""    
+    for lv_page in lv_pdf_formatted_content:
+        lv_text_data = lv_text_data + lv_page.page_content
+
+    lv_history = {
+                    "role": "model",
+                    "parts": [lv_text_data]
+                 }
+    lv_llm_response = lv_model.start_chat(
+                                            history=[lv_history]
+                                         ).send_message(mv_user_question)
+                                    
+
+    print("Step5: LLM response generated")
+    fn_display_user_messages("Step5: LLM response generated","Info", mv_processing_message)
+
+    return lv_llm_response.content
+
+
 # Main Program
 def main():
     # -- Streamlit Settings
@@ -136,27 +192,6 @@ def main():
     # -- Setting Chat History
     if "messages" not in st.session_state:
         st.session_state["messages"] = []
-
-    # -- Creating App Display
-    lv_prompt = st.chat_input("Pass your input here")
-
-    # -- Recording Chat Input and Generating Response
-    if lv_prompt:
-        # -- Saving User Input
-        st.session_state.messages.append({"role": "user", "content": lv_prompt})
-
-        # -- Generating LLM Response
-        lv_response = "Hello"
-
-        # -- Saving LLM Response
-        st.session_state.messages.append(
-            {"role": "model", "content": lv_response}
-        )
-
-        # -- Display chat messages from history
-        for message in st.session_state.messages:
-            with st.chat_message(message["role"]):
-                st.markdown(message["content"])
 
     # -- Read User Manuals for Q&A
     with st.sidebar:
@@ -176,6 +211,27 @@ def main():
         # -- Clear Chat History
         if col2.button("Reset"):
             st.session_state["messages"] = []
+
+    # -- Creating Chat Details
+    mv_user_question = st.chat_input("Pass your input here")
+
+    # -- Recording Chat Input and Generating Response
+    if mv_user_question:
+        # -- Saving User Input
+        st.session_state.messages.append({"role": "user", "content": mv_user_question})
+
+        # -- Generating LLM Response
+        lv_response = fn_generate_QnA_response(mv_user_question, mv_pdf_input_file, mv_processing_message)
+
+        # -- Saving LLM Response
+        st.session_state.messages.append(
+            {"role": "model", "content": lv_response}
+        )
+
+        # -- Display chat messages from history
+        for message in st.session_state.messages:
+            with st.chat_message(message["role"]):
+                st.markdown(message["content"])
 
 # Loading Main
 if __name__ == "__main__":
