@@ -9,15 +9,27 @@ from langchain_community.document_loaders import TextLoader
 
 app = Flask(__name__)
 
-@app.route('/api/chatwithum', methods=['POST'])
-def generate_output():
+@app.route('/', methods=['GET'])
+def root():
+    logs = request.args.get('logs')
+
+    if logs:
+        # Return "Building in progress" message in HTML format
+        return "<h1>Building in progress</h1>", 200, {'Content-Type': 'text/html'}
+    else:
+        # Return "Search at /generate_output" message in HTML format
+        return "<h1>Search at <a href='/api'>/api</a></h1>", 200, {'Content-Type': 'text/html'}
+
+
+@app.route('/api', methods=['GET'])
+def api():
 
     # Loading Google Gemini API Key from Environment Variables
     load_dotenv()
     genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
 
     # Getting the input string from the request
-    input_string = request.json.get('query')
+    input_string = request.args.get('query')
 
     # Variables
     lv_template   = """Instruction:
@@ -54,6 +66,7 @@ def generate_output():
 
     # Returning the output as JSON response
     return jsonify({'response': lv_llm_response})
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=7860, debug=True)

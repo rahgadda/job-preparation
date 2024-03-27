@@ -5,3 +5,6 @@ Content-Type: application/json
 {
     "query": "What is Bureau Integration Service "
 }
+
+###
+GET https://huggingface.co/spaces/rahgadda/google-genai-local-server/api?query=What is Bureau Integration Service
