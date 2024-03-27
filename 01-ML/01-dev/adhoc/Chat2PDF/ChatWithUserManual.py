@@ -137,8 +137,10 @@ def fn_generate_QnA_response(mv_user_question, mv_pdf_input_file, mv_processing_
                                     template=lv_template,
                                     input_variables=["question", "context"]
                                  )    
-    lv_model = ChatGoogleGenerativeAI(model="gemini-pro",
-                 temperature=0.7, top_p=0.85)
+    # lv_model = ChatGoogleGenerativeAI(model="gemini-pro",
+    #              temperature=0.7, top_p=0.85)
+
+    lv_model = genai.GenerativeModel('gemini-pro')
 
     lv_file_name = mv_pdf_input_file.name[:-4] + ".txt"
     lv_temp_file_path = os.path.join(os.path.join("vectordb","txt"),lv_file_name)
@@ -153,12 +155,13 @@ def fn_generate_QnA_response(mv_user_question, mv_pdf_input_file, mv_processing_
                                                     context=lv_text_data
                                                 )
     
-    lv_llm_response = lv_model.invoke(lv_qa_formatted_prompt)
+    # lv_llm_response = lv_model.invoke(lv_qa_formatted_prompt).content
+    lv_llm_response = lv_model.generate_content(lv_qa_formatted_prompt).text
 
     print("Step5: LLM response generated")
     fn_display_user_messages("Step5: LLM response generated","Info", mv_processing_message)
 
-    return lv_llm_response.content
+    return lv_llm_response
 
 
 # Main Program
