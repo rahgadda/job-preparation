@@ -5,6 +5,7 @@ from flask import Flask, request, jsonify
 import google.generativeai as genai
 from dotenv import load_dotenv
 from langchain import PromptTemplate
+from langchain_community.document_loaders import TextLoader
 
 app = Flask(__name__)
 
@@ -36,7 +37,7 @@ def generate_output():
     
     lv_model = genai.GenerativeModel('gemini-pro')
 
-    lv_file_name = ".txt"
+    lv_file_name = "oracle-banking-common-core-user-guide-pages-5.txt"
     lv_temp_file_path = os.path.join(os.path.join("vectordb","txt"),lv_file_name)
     lv_text_loader = TextLoader(lv_temp_file_path)
     lv_pdf_formatted_content = lv_text_loader.load()
@@ -45,22 +46,14 @@ def generate_output():
         lv_text_data = lv_text_data + lv_page.page_content
 
     lv_qa_formatted_prompt = lv_qa_prompt.format(  
-                                                    question=mv_user_question,
+                                                    question=input_string,
                                                     context=lv_text_data
                                                 )
 
-
-
-
-
-
-
-    # Your processing logic here
-    # For demonstration, let's just reverse the input string
-    output_string = input_string[::-1]
+    lv_llm_response = lv_model.generate_content(lv_qa_formatted_prompt).text
 
     # Returning the output as JSON response
-    return jsonify({'response': output_string})
+    return jsonify({'response': lv_llm_response})
 
 if __name__ == '__main__':
     app.run(debug=True)
