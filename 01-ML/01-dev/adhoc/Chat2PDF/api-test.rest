@@ -1,5 +1,5 @@
 
-POST http://127.0.0.1:5000/api/chatwithum
+POST http://127.0.0.1:7860/api/chatwithum
 Content-Type: application/json
 
 {
