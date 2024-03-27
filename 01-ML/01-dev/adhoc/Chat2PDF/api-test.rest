@@ -1,10 +1,17 @@
+### Root
+GET http://127.0.0.1:7860
 
-POST http://127.0.0.1:7860/api/chatwithum
-Content-Type: application/json
+### Logs
+GET http://127.0.0.1:7860?logs=container
 
-{
-    "query": "What is Bureau Integration Service "
-}
+### API
+GET http://127.0.0.1:7860/api?query=What is Bureau Integration Service
 
-###
-GET https://huggingface.co/spaces/rahgadda/google-genai-local-server/api?query=What is Bureau Integration Service
+### HuggingFace Root
+GET https://huggingface.co/spaces/rahgadda/google-genai-local-server/
+
+### HuggingFace Logs
+GET https://huggingface.co/spaces/rahgadda/google-genai-local-server?logs=container
+
+### HuggingFace Api
+GET https://huggingface.co/spaces/rahgadda/google-genai-local-server?query=What is Bureau Integration Service
