@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 import streamlit as st
 import phoenix as px
 import google.generativeai as genai
-from langchain_google_genai import ChatGoogleGenerativeAI
+from langchain_google_genai import ChatGoogleGenerativeAI, GoogleGenerativeAIEmbeddings
 import phoenix as px
 from phoenix.trace.langchain import LangChainInstrumentor
 
