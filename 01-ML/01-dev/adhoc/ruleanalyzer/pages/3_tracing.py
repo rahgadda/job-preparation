@@ -1,4 +1,8 @@
 import streamlit as st
-from streamlit.components.v1 import html
+import requests
+import streamlit.components.v1 as components
 
-st.components.v1.html('<iframe src="http://localhost:6006/"></iframe>')
+st.set_page_config(layout="wide")
+target_url = "https://6006-rahgadda-knowledgebase-t3jcysjtsmd.ws-us110.gitpod.io/"
+response = requests.get( target_url)
+components.iframe(target_url,height=800, width=1500)
