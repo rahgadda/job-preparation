@@ -11,7 +11,6 @@ from phoenix.trace.langchain import LangChainInstrumentor
 # Starting Arize Phoenix
 session = px.launch_app()
 LangChainInstrumentor().instrument()
-# session.url
 
 # Loading Google Gemini API Key from Environment Variables
 load_dotenv()
