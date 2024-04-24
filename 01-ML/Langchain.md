@@ -2,7 +2,7 @@
 
 ## Overview
 - It is a framework designed to simplify the creation of applications using `Large Language Models (LLMs)`. 
-- LangChain Libraries, available in both Python and JavaScript.
+- LangChain libraries are available in both Python and JavaScript.
 
 ## History
 - Founder `Harrison Chase` was still an engineer at `Robust Intelligence` and ChatGPT hadn’t taken over the world yet.
@@ -16,7 +16,8 @@
 
 
 ## Modules
-- `langchain-core`: Base abstractions and LangChain Expression Language
+- `langchain-core`: Base abstractions and `LangChain Expression Language`.
+  - 
 - `langchain-community`: Third party integrations and partner packages that only rely on langchain-core.
 - `langchain`: Chains, agents, and retrieval strategies that make up an application's cognitive architecture.
 - `LangGraph`: A library for building robust and stateful multi-actor applications with LLMs by modeling steps as edges and nodes in a graph.
@@ -25,4 +26,12 @@
 
     ![](https://python.langchain.com/svg/langchain_stack.svg)
 
+## Glossary
+- `Prompt Templates`:  Convert raw user input to better input to the LLM.
+- `Chains`: It refer to sequences of calls - whether to an LLM, a tool, or a data preprocessing step
+  - 
+
+
 ## Reference
+- [LangChain's origin story](https://www.basedash.com/blog/langchains-origin-story)
+- [Langchain - Quickstart Guide](https://python.langchain.com/docs/get_started/quickstart/)
