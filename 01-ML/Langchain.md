@@ -1,11 +1,19 @@
 # Langchain
-- It is a framework designed to simplify the creation of applications using `Large Language Models (LLMs)`. 
 
 ## Overview
-- 
+- It is a framework designed to simplify the creation of applications using `Large Language Models (LLMs)`. 
+- LangChain Libraries, available in both Python and JavaScript.
 
 ## History
-- LangChain was launched in `October 2022` as an open source project by Harrison Chase, while working at machine learning startup Robust Intelligence
+- Founder `Harrison Chase` was still an engineer at `Robust Intelligence` and ChatGPT hadn’t taken over the world yet.
+- In `early 2022`, while attending a company hackathon, Harrison built a chatbot that could query internal data from Notion and Slack. That work would eventually lead to Notion QA, an open-source project where users could ask questions to internal Notion databases in natural language.
+- Then, as the year wore on, he attended meetups in SF where the beginnings of an AI ecosystem were building. Stable Diffusion had ignited interest in image generation, and GPT-3 was starting to show promise for real-world applications.
+- At these meetups, Harrison consistently saw common, duplicative abstractions that developers had to build on top of LLMs to make them useful and that pain point became the idea for LangChain, an open-source projects to simplify these abstractions.
+- The project started on `October 16th 2022` with a fairly simple PR - [“add initial prompt stuff”](https://github.com/langchain-ai/langchain/pull/1).
+- The timing was perfect, `On November 30th 2022`, ChatGPT came out and brought the first spike of developers to LangChain. In December, the month after ChatGPT’s launch, LangChain tripled in traction from 584 to 1,413 stars.
+- In January 2023, Harrison made things official by recruiting [Ankush Gola](https://www.linkedin.com/in/ankush-gola-77255866/), a former coworker at Robust Intelligence, and incorporated the company.
+- All in all, LangChain has won the hearts and minds of most AI developers.
+
 
 ## Modules
 - `langchain-core`: Base abstractions and LangChain Expression Language
