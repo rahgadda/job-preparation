@@ -28,7 +28,7 @@
 
 ## Glossary
 - `Prompt Templates`:  Convert raw user input to better input to the LLM.
-- `Chains`: It refer to sequences of calls - whether to an LLM, a tool, or a data preprocessing step
+- `Chains`: It refer to sequences of calls - whether to an LLM, a tool, or a data preprocessing step. The primary supported way to do this is with `LCEL`.
 - `Agents`: In chains, a sequence of actions is hardcoded. To overcome this, agents use LLM as reasoning engine to determine which actions to take and in which order.
 - `Tools:` These are interfaces that an agent, chain, or LLM can use to interact with the world. 
 
