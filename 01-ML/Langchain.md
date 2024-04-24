@@ -1,6 +1,7 @@
 # Langchain
 
 ## Overview
+- The term langchain originates from the amalgamation of `language` and `chain`, symbolizing the interlinked nature of linguistic elements within an AI framework.
 - It is a framework designed to simplify the creation of applications using `Large Language Models (LLMs)`. 
 - LangChain libraries are available in both Python and JavaScript.
 
@@ -17,7 +18,6 @@
 
 ## Modules
 - `langchain-core`: Base abstractions and `LangChain Expression Language`.
-  - 
 - `langchain-community`: Third party integrations and partner packages that only rely on langchain-core.
 - `langchain`: Chains, agents, and retrieval strategies that make up an application's cognitive architecture.
 - `LangGraph`: A library for building robust and stateful multi-actor applications with LLMs by modeling steps as edges and nodes in a graph.
@@ -29,7 +29,8 @@
 ## Glossary
 - `Prompt Templates`:  Convert raw user input to better input to the LLM.
 - `Chains`: It refer to sequences of calls - whether to an LLM, a tool, or a data preprocessing step
-  - 
+- `Agents`: In chains, a sequence of actions is hardcoded. To overcome this, agents use LLM as reasoning engine to determine which actions to take and in which order.
+- `Tools:` These are interfaces that an agent, chain, or LLM can use to interact with the world. 
 
 
 ## Reference
