@@ -18,12 +18,12 @@
 
 ## Modules
 - `langchain-core`:
-  - Base abstractions and `LangChain Expression Language - (LCEL)`.
+  - It is abstracted using `LangChain Expression Language - (LCEL)`.
   - It is the foundation of many of LangChain's components, and is a declarative way to compose chains.
   - It makes it easy to build complex chains from basic components, and supports out of the box functionality such as streaming, parallelism, and logging.
-  - Example of basic chain, chaining  a prompt template, model & output parser
+  - Example of basic chain - **create a prompt template, connect to openai model & generate output using output parser.**
     ```bash
-    pip install -qU langchain-openai
+    pip install -qU langchain_core langchain-openai
     ```
     ```python
     import getpass
