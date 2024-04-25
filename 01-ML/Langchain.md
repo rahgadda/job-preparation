@@ -21,6 +21,15 @@
   - It is abstracted using `LangChain Expression Language - (LCEL)`.
   - It is the foundation of many of LangChain's components, and is a declarative way to compose chains.
   - It makes it easy to build complex chains from basic components, and supports out of the box functionality such as streaming, parallelism, and logging.
+  - **Features:**
+    - Generate output at the same rate as the LLM provider outputs
+    - Synchronous & Asynchronous API support.
+    - Execute in parallel.
+    - Configurable retries and fallbacks
+    - Access intermediate results
+    - Pydantic and JSON Schema Input and output
+    - Tracing/Logging with LangSmith
+    - REST API with LangServe
   - Example of basic chain - **create a prompt template, connect to openai model & generate output using output parser.**
     ```bash
     pip install -qU langchain_core langchain-openai
