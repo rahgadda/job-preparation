@@ -61,7 +61,7 @@
     chain.invoke({"topic": "ice cream"})
     ```
     
-    Note: Additional examples are available [here](01-ML/01-dev/langchain/01_chat_chains)
+    Note: Additional examples are available [here](./01-dev/langchain/01_chat_chains)
 - `langchain-community`: Third party integrations and partner packages that only rely on langchain-core.
 - `langchain`: Chains, agents, and retrieval strategies that make up an application's cognitive architecture.
 - `LangGraph`: A library for building robust and stateful multi-actor applications with LLMs by modeling steps as edges and nodes in a graph.
