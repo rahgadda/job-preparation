@@ -60,6 +60,7 @@
     # Generating response
     chain.invoke({"topic": "ice cream"})
     ```
+  - 
 - `langchain-community`: Third party integrations and partner packages that only rely on langchain-core.
 - `langchain`: Chains, agents, and retrieval strategies that make up an application's cognitive architecture.
 - `LangGraph`: A library for building robust and stateful multi-actor applications with LLMs by modeling steps as edges and nodes in a graph.
