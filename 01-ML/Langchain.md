@@ -68,7 +68,7 @@
 - `LangSmith`: A developer platform that lets you debug, test, evaluate, and monitor chains built on any LLM framework and seamlessly integrates with LangChain.
 - `LangServe`: A library for deploying LangChain chains as REST APIs.
 
-    ![](https://python.langchain.com/svg/langchain_stack.svg)
+    ![](./00-images/langchain_stack_dark.svg)
 
 ## Glossary
 - `Chains`: It refer to sequences of calls - whether to an LLM, a tool, or a data preprocessing step. The primary supported way to do this is with `LCEL`.
