@@ -17,7 +17,7 @@
 
 
 ## Modules
-- `langchain-core`:
+- `langchain-core`: It contains the base abstractions and runtime for the whole LangChain ecosystem. It is a core abstractions involving LangChain Runnables, tooling for observability, and base implementations of important abstractions.
   - *LCEL:*
     - It is abstracted using `LangChain Expression Language - (LCEL)`.
     - It is the foundation of many of LangChain's components, and is a declarative way to compose chains.
@@ -66,8 +66,16 @@
   - *Prompt:*
     - LLM applications do not pass user input directly into an LLM Models.
     - They will add the user input to a larger piece of text, called a prompt template, that provides additional context on the specific task at hand.
-    - `BasePromptTemplate` takes in a dictionary of template variables and produces a `PromptValue`.
-    -  
+    - `Effective Prompting Techniques:`
+      - Prompting is an art. You will likely need to try a few different approaches for your prompt if you don’t get your desired outcome the first time.
+      - There are four main area's  to consider when writing an effective prompt.
+        - Persona: 
+        - Task:
+        - Context:
+        - Format:
+          ```
+          Your are news article writer, create a blog post to summarize banking scra regulartion, {Context}, generate response in markdown format with sections overview, validations, reference. In each of these sections use  bullet points. 
+          ```
 - `langchain`: Chains, agents, and retrieval strategies that make up an application's cognitive architecture.
   - *LLM:*
     - Langchain supports two methods/component types to interact with LLM's
@@ -99,7 +107,8 @@
         chat_model.invoke(messages)
         # >> AIMessage(content="Socks O'Color")
         ```
-- `langchain-community`: Third party integrations and partner packages that only rely on langchain-core.
+- `langchain-community`: Third party integrations and partner packages that only rely on langchain & langchain-core.
+- `langchain-<partner>`: Partner packages dedicated to especially popular integrations (e.g., langchain-openai, langchain-anthropic etc.). The dedicated packages generally benefit from better reliability and support.
 - `LangGraph`: A library for building robust and stateful multi-actor applications with LLMs by modeling steps as edges and nodes in a graph.
 - `LangSmith`: A developer platform that lets you debug, test, evaluate, and monitor chains built on any LLM framework and seamlessly integrates with LangChain.
 - `LangServe`: A library for deploying LangChain chains as REST APIs.
