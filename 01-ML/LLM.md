@@ -46,3 +46,4 @@
 - [Huggingface NLP Course](https://huggingface.co/learn/nlp-course/chapter1/1)
 - [Fastai DeepLearning](https://course.fast.ai/)
 - [What is a neural network?](https://www.youtube.com/watch?v=aircAruvnKk&list=RDCMUCYO_jab_esuFRV4b17AJtAw&start_radio=1&rv=aircAruvnKk&t=4)
+- [How LLM Work](https://www.youtube.com/watch?v=UZDiGooFs54)
