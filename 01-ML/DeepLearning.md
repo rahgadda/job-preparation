@@ -29,3 +29,5 @@
 - [Andrej Karpathy - Neural Networks: Zero to Hero](https://www.youtube.com/playlist?list=PLAqhIrjkxbuWI23v9cThsA9GvCAUhRvKZ)
 - [Microsoft - Generative-ai-for-beginners](https://github.com/microsoft/generative-ai-for-beginners?tab=readme-ov-file)
 - [Stanford CS25 - Transformers United](https://www.youtube.com/playlist?list=PLoROMvodv4rNiJRchCzutFw5ItR_Z27CM)
+- [Huggingface NLP Course](https://huggingface.co/learn/nlp-course/chapter1/1)
+- [Fastai DeepLearning](https://course.fast.ai/)
