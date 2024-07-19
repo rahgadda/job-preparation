@@ -3,7 +3,9 @@
 ## Overview
 - `Artificial Intelligence (AI)` is a broad discipline with roots in the 1950s, focused on creating machines capable of mimicking human intelligence. 
 - `Machine Learning`, a subset of AI, was developed in the 1980s. Its primary focus is on enabling machines to learn from data, improve their performance, and make decisions without explicit programming.
-- `Deep Learning`, a subset of ML that uses artificial neural networks (ANNs) to mimic the human brain's learning process and automate complex tasks. These ANNs have layers more than 3.
+- `Deep Learning`, a subset of ML that uses artificial neural networks (ANNs) to mimic the human brain's learning process and automate complex tasks. 
+  - These ANNs have more than 3 layers.
+  - Input data is also not labeled and system will try to identify patterns.
     
     ![](./00-images/Deeplearning.png)
 
