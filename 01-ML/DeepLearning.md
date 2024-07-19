@@ -1,0 +1,19 @@
+# Deep Learning
+
+## Overview
+- `Artificial Intelligence (AI)` is a broad discipline with roots in the 1950s, focused on creating machines capable of mimicking human intelligence. 
+- `Machine Learning`, a subset of AI, was developed in the 1980s. Its primary focus is on enabling machines to learn from data, improve their performance, and make decisions without explicit programming.
+- `Neural Networks`, 
+- `Deep Learning`, a subset of ML that uses artificial neural networks (ANNs) to mimic the human brain's learning process and automate complex tasks.
+    
+    ![](./00-images/Deeplearning.png)
+- 
+
+
+## References
+- [3Blue1Brown Deeplearning](https://www.youtube.com/watch?v=aircAruvnKk&list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi)
+- [MI Deeplearning](http://introtodeeplearning.com/), [Playlist](https://www.youtube.com/watch?v=ErnWZxJovaM&list=PLtBw6njQRU-rwp5__7C0oIVt26ZgjG9NI&index=2)
+- [Linear Algebra](https://www.youtube.com/watch?v=fNk_zzaMoSs&list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab)
+- [Calculus](https://www.youtube.com/watch?v=WUvTyaaNkzM&list=PLZHQObOWTQDMsr9K-rj53DwVRMYO3t5Yr)
+- [Probability & Statistics](https://www.youtube.com/watch?v=COI0BUmNHT8&list=PLyqSpQzTE6M_JcleDbrVyPnE0PixKs2JE)
+- [NPTEL Deeplearning](https://www.youtube.com/watch?v=aPfkYu_qiF4&list=PLEAYkSg4uSQ1r-2XrJ_GBzzS6I-f8yfRU)
