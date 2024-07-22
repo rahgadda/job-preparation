@@ -40,6 +40,7 @@
     print(multiply_numbers(3,5))
     ```
 - **Varaiables:**
+  
 - **DataTypes:**
   - **Primitive:**
   - **Derived:**
