@@ -11,6 +11,14 @@
 - There are two major release of Python `2.x.x` & `3.x.x`. Python 3.0, a completely revamped version of Python was released in December 2008. It was revamped to remove a lot of discrepancies that had crept in Python 2.x versions.
 
 ## Moduels
+- **Basics:**
+  - **Interpreter:**
+    - Python is an interpreter-based language.
+    - Python code is executed by one statement at a time. It has two parts
+      - `Translator:` Checks the statement for syntax.
+      - `Virtual machine:` Converts the byte code in native binary and executes it. 
+        ![](./00-images/python_interpreter.jpg)
+  - 
 - **Comments:**
   - `Single-line:`
     ```python
@@ -40,7 +48,7 @@
     print(multiply_numbers(3,5))
     ```
 - **Varaiables:**
-  
+  - 
 - **DataTypes:**
   - **Primitive:**
   - **Derived:**
@@ -56,6 +64,7 @@
   - **Lamda:**
 - **Expectional Handling:**
 - **Threading:**
+- **Unit Testing:**
 - **Object Oriented Programming:**
 - **Functional Programming:**
 - **Library:**
