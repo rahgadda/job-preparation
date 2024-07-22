@@ -55,6 +55,7 @@
 - **Functions:**
   - **Lamda:**
 - **Expectional Handling:**
+- **Threading:**
 - **Object Oriented Programming:**
 - **Functional Programming:**
 - **Library:**
