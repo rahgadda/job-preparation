@@ -62,4 +62,6 @@
   - **System Defined Functions:**
 
 ## Reference
-[Harvard CS50’s Introduction to Programming with Python](https://www.youtube.com/watch?v=nLRL_NcnK-4&t=2365s)
+- [Harvard CS50’s Introduction to Programming with Python](https://www.youtube.com/watch?v=nLRL_NcnK-4&t=2365s)
+- [Stanford - Python](https://www.youtube.com/watch?v=Oe6rHPmFY3o&list=PLVxFQjPUB2cnYGZPAGG52OQc9SpWVKjjB)
+- [Harvard CS50’s - Artificial Intelligence with Python](https://www.youtube.com/watch?v=5NgNicANyqM&t=11421s)
