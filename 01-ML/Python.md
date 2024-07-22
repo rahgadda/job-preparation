@@ -58,6 +58,8 @@
 - **Object Oriented Programming:**
 - **Functional Programming:**
 - **Library:**
+  - **Creating Library:**
+  - **System Defined Functions:**
 
 ## Reference
 [Harvard CS50’s Introduction to Programming with Python](https://www.youtube.com/watch?v=nLRL_NcnK-4&t=2365s)
