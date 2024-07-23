@@ -18,7 +18,6 @@
       - `Translator:` Checks the statement for syntax.
       - `Virtual machine:` Converts the byte code in native binary and executes it. 
         ![](./00-images/python_interpreter.jpg)
-  - 
 - **Comments:**
   - `Single-line:`
     ```python
@@ -97,6 +96,8 @@
         - Any string is True, except empty strings.
         - Any number is True, except 0.
         - Any list, tuple, set, and dictionary are True, except empty ones.
+  - **Scope:**
+    - 
 - **Operators:**
   - **Arithmetic:**
   - **Comparison:**
