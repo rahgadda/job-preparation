@@ -48,11 +48,55 @@
     print(multiply_numbers(3,5))
     ```
 - **Varaiables:**
-  - 
-- **DataTypes:**
-  - **Primitive:**
-  - **Derived:**
-  - **TypeCasting:**
+  - Python has no command for declaring a variable.
+  - A variable is created the moment you first assign a value to it.
+  - Variable names are case-sensitive.
+  - String variables can be declared either by using single or double quotes.
+  - **DataTypes:**
+    - **Primitive:**
+      - Integers
+      - Floats
+      - Strings
+      - Booleans, True/False
+    - **Derived:**
+      - List
+        - List items are `ordered, changeable, and allow duplicate` values.
+        - A list can contain different data types.
+        - List items are indexed, the first item has index [0], the second item has index [1]
+        - Negative indexing means start from the end. -1 refers to the last item, -2 refers to the second last item etc.
+          ```python
+          furitList = ["apple", "banana", "cherry"]
+          ```
+      - Tuple
+        - Tuple items are `ordered, unchangeable, and allow duplicate` values.
+        - Tuple items can be of any data type.
+        - Indexing works similar to List.
+          ```python
+          furitTuple = ("apple", "banana", "cherry")
+          ```
+      - Set
+        - A set is a collection which is `unordered, unchangeable, and unindexed`.
+          ```python
+          furitSet = {"apple", "banana", "cherry"}
+          ```
+      - Dictionary
+        - Dictionaries are used to store data values in `key:value` pairs.
+          ```python
+          vehicleDict = {
+                      "brand": "Ford",
+                      "model": "Mustang",
+                      "year": 1964
+                    }
+          print(vehicleDict)
+          ```
+    - **TypeCasting:**
+      - int()
+      - float()
+      - str()
+      - bool()
+        - Any string is True, except empty strings.
+        - Any number is True, except 0.
+        - Any list, tuple, set, and dictionary are True, except empty ones.
 - **Operators:**
   - **Arithmetic:**
   - **Comparison:**
