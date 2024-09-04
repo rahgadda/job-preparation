@@ -7,7 +7,7 @@
     $$
     x \in \mathbb{R} = 5
     $$
-  - `Vectors:` Represents a sequence of numbers represented as a single row or single column of values.
+  - `Vectors:` Represents a sequence of numbers represented as a single row or single column of values. It has magnitude and direction.
     $$
     \vec{v} \in \mathbb{R}^3 = \begin{bmatrix} 2 \\ 3 \\ 4 \end{bmatrix} 
     \\
