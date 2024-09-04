@@ -12,3 +12,4 @@
 - [Probability & Statistics](https://www.youtube.com/watch?v=COI0BUmNHT8&list=PLyqSpQzTE6M_JcleDbrVyPnE0PixKs2JE)
 - [Weights & Biases - Math for Machine Learning](https://www.youtube.com/watch?v=uZeDTwWcnuY&list=PLD80i8An1OEGZ2tYimemzwC3xqkU0jKUg)
 - [NPTEL - Essential Mathematics for Machine Learning](https://www.youtube.com/watch?v=JO9jNe6BemE&list=PLLy_2iUCG87D1CXFxE-SxCFZUiJzQ3IvE)
+- [Udemy Course](https://www.udemy.com/course/mathematics-basics-to-advanced-for-data-science-and-ml/)
