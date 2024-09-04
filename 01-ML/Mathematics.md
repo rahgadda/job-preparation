@@ -7,13 +7,13 @@
     $$
     x \in \mathbb{R} = 5
     $$
-  - `Vectors:` It is a represention of a sequence of numbers via a single row or single column.
+  - `Vectors:` Represents a sequence of numbers via a single row or single column.
     $$
     \vec{v} \in \mathbb{R}^3 = \begin{bmatrix} 2 \\ 3 \\ 4 \end{bmatrix} 
     \\
     \vec{v} \in \mathbb{R}^3 = \begin{bmatrix} 2 3 4 \end{bmatrix}
     $$
-  - `Matrix:` It contains a rectangular array of numbers.   
+  - `Matrix:` Contains a rectangular array of numbers.   
     $$
     M \in \mathbb{R}^{3 \times 2}=
     \begin{bmatrix}
