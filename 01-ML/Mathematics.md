@@ -3,11 +3,11 @@
 ## Modules
 ### Linear Algebra
 - It is a branch of mathematics that is used to study vectors and linear functions.
-  - `Scalar:` A single number.
+  - `Scalar:` A single number that does not have any direction.
     $$
     x \in \mathbb{R} = 5
     $$
-  - `Vectors:` Represents a sequence of numbers via a single row or single column.
+  - `Vectors:` Represents a sequence of numbers represented as a single row or single column of values.
     $$
     \vec{v} \in \mathbb{R}^3 = \begin{bmatrix} 2 \\ 3 \\ 4 \end{bmatrix} 
     \\
